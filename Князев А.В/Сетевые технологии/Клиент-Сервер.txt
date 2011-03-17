@@ -1,0 +1,260 @@
+Клиент
+
+...
+#include <windows.h>
+...
+#include SERV_PORT 5000;
+SOCKET srv_socket;
+SOCKADDR_IN local_sin;
+SOCKADDR_IN dest_sin;
+...WinMain(...)
+{
+	...
+}
+...WndProc(HWND hwnd,...)
+{
+...
+switch(msg)
+{
+	case WM_CREATE:
+		OnCreate();
+		return 0;
+	case WM_COMMAND:
+		switch(LOWORD(wParam))
+		{
+			case IDM_CONNECT:
+				SetConnection(hWnd);
+				break;
+			case IDM_SEND:
+				SendMsg(hWnd);
+				break;
+		}
+		return 0;
+	case WM_DESTROY:
+		WSACleanup();
+		...
+}
+return...
+}
+
+BOOL OnCreate()
+{
+	int rc;
+	WSADATA WSAData;
+	rc = WSAStartup(MAKEWORD(1,1),&WSAData)
+	if(rc!=0)
+	{
+		... //Обработка ошибки
+		return FALSE;
+	}
+	return TRUE;
+}
+
+void SetConnection(HWND hwnd)
+{
+PHOSTENT phe;
+srv_socket = socket(AF_INET, SOCK_STREAM, 0);
+if(srv_socket == INVALID)SOCKET)
+{
+	... //обработка ошибки;
+}
+dest_sin.sin_family = AF_INET;
+phe = gethostbyname("localhost");
+if(phe == NULL)
+{
+	...//обработка ошибки;
+}
+memcpy((char FAR*)&(dest_sin.sin_addr),phe->h_adr,phe->h.length);
+dest_sin.sin_port=htons(SERV_PORT);
+if(connect(srv_sovket,(PSOCKADDR)&dest_sin,sizeof(dezt_sin))<0)
+{
+	...
+}
+...
+}
+
+void SendMsg(HWND hwnd)
+{
+char szBuf[180];
+char szMsg[500];
+int iblock;
+int rc;
+strcpy(szBuf,"...");
+send(srv_socket,szBuf,strlen(szBuf),0);
+iblock = 0;
+szMsg[0]='\0';
+do
+{
+iblock++;
+if(iblock==4) break;
+rc=recv(srv_socket,szBuf,sizeof(szBuf),0);
+if(rc>0)
+{
+	szBuf[rc]='\0';
+	strcut(szMsg,szBuf);
+}
+} while(rc>0);
+... Обработка сообщения
+}
+
+------------------------------------------------
+
+Сервер
+
+...
+#define WSA_ACCEPT(WM_USER+1)
+#define WSA_NETEVENT(WM_USER+2)
+...
+#define SERV_PORT 5000;
+SOCKET srv_socket;
+SOCKADDR_IN local_sin;
+SOCKADDR_IN dest_sin;
+...WinMain(...)
+{
+	...
+}
+...WndProc(HWND hwnd,...)
+{
+...
+switch(msg)
+{
+	case WM_CREATE:
+		OnCreate();
+		return 0;
+	case WSA_ACCEPT:
+		OnWSAAccept(hWnd,msg,wParam,lParam);
+		return 0;
+	case WSA_NETEVENT:
+		OnWSANetEvent(hWnd,msg,wParam,lParam);
+	case WM_COMMAND:
+		switch(LOWORD(wParam))
+		{
+			case IDM_START:
+				ServerStart(hWnd);
+				break;
+			case IDM_STOP:
+				ServerStop(hWnd);
+				break;
+			case IDM_EXIT:
+				DestoryWindow(hWnd);
+				break;
+		}
+		return 0;
+	case WM_DESTROY:
+		WSACleanup();
+		PostQuitMessage(0);
+}
+	return DefWin...
+}
+
+BOOL OnCreate()
+{
+int rc;
+WSADATA WSAData;
+rc = WSAStartUp(MAKEWORD(1,1),&WSAData);
+if(rc!=0)
+{
+	...
+	return FALSE;
+}
+return TRUE;
+}
+
+void ServerStart(HWND hWnd)
+{
+struct sockaddr_in srv_address;
+int rc;
+srv_socket = socket(AF_INET,SOCK_STREAM,0);
+if(srv_socket==INVALID_SOCKET)
+{
+	...
+}
+srv_address.sin_family = AF_INET;
+srv_address.sin_addr.s_addr = INADDR_ANY;
+srv_address.sin_port = htons(SERV_PORT);
+if(bind(srv_socket,(LPSOCKADDR) &srv_address, sizeof(srv_address))==SOCKET_ERROR)
+{
+	...
+}
+if(listen(srv_socket,8) == SOCKET_ERROR)
+{
+	...
+}
+rc = WSAAsyncSelect(srv_socket,hWNd,WSA_ACCEPT,FD_ACCEPT);
+if(rc>0)
+{
+	...
+}
+...
+}
+
+void ServerStop(HWND hWnd)
+{
+WSAAsyncSelect(srv_socket,hWnd,0,0);
+if(srv_socket!=INVALID_SOCKET)
+	closesocket(srv_socket);
+...
+}
+
+void OnWSAAccept(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+int rc;
+if(WSAGETSELECTERROR(lParam)!=0)
+{
+	...
+}
+acc_sin_len = sizeof(acc_sin);
+rab_socket = accept(srv_socket,(LPSOCKADDR) &acc_sin,(int FAR*) &acc_sin_len);
+if(rab_socket == INVALID_SOCKET)
+{
+	...
+}
+rc = WSAAsyncSelect(rab_socket,hWnd,WSA_NETEVENT,FD_READ|FD_CLOSE);
+if(rc>0)
+{
+	...
+}
+}
+
+void OnWSANETEvent(HWND hWnd,UINT msg,WPARAM wParam,LPARAM lParam)
+{
+int rc;
+char szTemp[256];
+SOCKET sock;
+if(WSAGETSELECTEVENT(lParam) == FD_READ)
+{
+	sock = (SOCKET) wParam;
+	rc = recv(sock,szTemp,256,0);
+	if(rc)
+	{
+		szTemp[rc]='\0';
+		... //Вывод сообщения
+		SendReple(hWnd,sock,szTemp);
+	}
+	return;
+}
+else if(WSAGETSELECTEVENT(lParam)==FD_CLOSE)
+	{
+		...
+	}
+closesocket(sock);
+closesocket(rab_socket);
+}
+
+void SendReply(HWND hWnd, SOCKET sock, charszMsg[])
+{
+char szBuf[500];
+strcpy(szBuf,"REply on message: ");
+strcat(szBuf,szMsg);
+send(sock,szBuf,strlen(szBuf),0);
+}
+
+
+
+ 
+
+
+
+
+
+

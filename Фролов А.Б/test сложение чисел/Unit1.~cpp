@@ -1,0 +1,369 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+        : TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+unsigned long _a[128];
+unsigned char _b[128];
+
+
+unsigned long sub(int i,int j,int l,int p=0)
+{
+
+        unsigned long perenos=0;
+        int dest=i;
+        int k=0;
+        for(;k<l;k++)
+                if(_a[i+k]!=_a[j+k])break;
+        if (k<l)
+        if (_a[i+k]<_a[j+k])
+        {
+        i=i&0xfffffffe;
+        for(int k=0;k<l;k+=2)
+                _b[i+k]=!_b[i+k];
+        i=j;
+        j=dest;
+        }
+
+        for(k=l-1;k>=0;k--)
+        {
+                unsigned long temp=_a[i+k];
+                _a[dest+k]=_a[i+k]-_a[j+k]-perenos;
+                if(temp>=_a[j+k]+perenos) perenos=0;
+                else perenos=1;
+        }
+        // normally, perenos==0 here
+        return perenos;
+}
+//это хак. он может не работать
+unsigned long perenos=0;
+unsigned long _add(int i,int j,int l, int p)
+{
+        //unsigned long perenos=0;
+        //это хак. он может не работать
+        _a[i-1]+=perenos;
+        perenos=0;
+        for(int k=l-1;k>=0;k--)
+        {       _a[i+k]+=_a[j+k]+perenos;
+                if(_a[i+k]>=_a[j+k]+perenos) perenos=0;
+                else perenos=1;
+        }
+        return perenos;
+}
+void add(int i,int j,int l, int p=0)
+{
+        perenos=0;
+        if(_b[i&0xfffffffe]!=_b[j&0xfffffffe]) sub(i,j,l,p);
+        else _add(i,j,l,p);
+}
+
+//замечание!!!
+// для gcc: __int64 = longlong
+void mul (int i, int j, int l=1)
+{
+        unsigned __int64 r = (__int64)_a[i]*(__int64)_a[j]; //по-другому никак, С++ - реально тупой язык программирования...
+                _a[i]=r>>32;
+                _a[j]=r;
+}
+void equ(int i,int j,int l)
+{
+        for(int k=0;k<l;k++)
+               _a[i+k]=_a[j+k];
+        for(int k=0;k<l;k+=2)
+        if (_b[(j+k)&0xfffffffe]) _b[(i+k)&0xfffffffe]=!_b[(i+k)&0xfffffffe];
+}
+void xchg(int i,int j,int l)
+{
+        for(int k=0;k<l;k++)
+        {       long temp=_a[j+k];
+                _a[j+k]=_a[i+k];
+                _a[i+k]=temp;
+                if(_b[(j+k)&0xfffffffe] ^ _b[(i+k)&0xfffffffe])
+                {
+                        _b[(j+k)&0xfffffffe]=1;
+                        _b[(i+k)&0xfffffffe]=1;
+                }
+                //unsigned char t=_b[(j+k)&0xfffffffe];
+                //_b[(j+k)&0xfffffffe]=_b[(i+k)&0xfffffffe];
+                //_b[(i+k)&0xfffffffe]=t;
+        }
+}
+
+
+/* //ассемблерную реализацию операций заломали из-за "кросплатформенности". lol...
+void sub(int i,int j,int l=1)
+{
+        __asm{
+                mov ebx, [l]
+                mov ecx, ebx
+                mov edi, [i]
+                add edi, ebx
+                lea edi, _a[edi*4 - 4]
+                mov esi, [j]
+                add esi, ebx
+                lea esi, _a[esi*4 - 4]
+                dec ecx
+                jz _noloop
+                clc
+                std
+                _loop:
+                lodsd
+                mov edx, [edi]
+                sbb edx, eax
+                xchg edx, eax
+                stosd
+                loop _loop
+                jnc _noloop
+                inc ecx
+                _noloop:
+                lodsd
+                sub [edi],eax
+                jc _negative
+                sub [edi],ecx
+                jc _otkat
+                jmp _return
+                _otkat:
+                inc [edi]
+                _negative:
+                mov ecx, ebx
+                _negloop:
+                neg dword [edi]  //здесь плохо!
+                add edi, 4
+                loop _negloop
+                mov eax, [i]
+                and eax, 0xfffffffe
+                _notloop:
+                not byte [ecx*1 + eax + OFFSET _b]
+                add ecx, 2
+                cmp ecx, ebx
+                jc _notloop
+                _return:
+                cld
+        }
+}
+
+void add(int i,int j,int l, int p=0)
+{
+        __asm{
+                mov ecx, [l]
+                mov edi, [i]
+                add edi, ecx
+                lea edi, _a[edi*4 - 4]
+                mov esi, [j]
+                add esi, ecx
+                lea esi, _a[esi*4 - 4]
+                clc
+                std
+                _loop:
+                lodsd
+                mov edx, [edi]
+                adc edx, eax
+                xchg edx, eax
+                stosd
+                loop _loop
+                //jnc _return
+                //mov esi, [p]
+                //inc _a[esi*4]
+                _return:
+        // это не очень хорошая идея вычитания знакового бита после операции сложения
+                mov edi, [i]
+                mov esi, [j]
+                mov cl, _b[esi]
+                neg cl
+                sub _a[edi*4], ecx
+                cld
+        }
+}
+void iadd(int i, int j, int l)
+{
+        if(_b[i]!=_b[j]) sub(i,j,l);
+        else add(i,j,l);
+}
+void mul (int i, int j, int l)
+{
+        __asm{
+                mov edi, [i]
+                mov esi, [j]
+                mov eax,_a[edi*4]
+                mov ebx,_a[esi*4]
+                mul ebx
+                mov _a[edi*4],edx
+                mov _a[esi*4],eax
+         // вместо того чтобы выполнять сложение\вычитание по знаковому биту выполним отрицание операнда
+                cmp _b[edi],0
+                jz _return
+                neg _a[edi*4]
+                neg _a[esi*4]
+                _return:
+        }
+}
+void equ(int i,int j,int l)
+{
+        __asm{
+                mov edi, [i]
+                lea edi, [edi*4 + OFFSET _a]
+                mov esi, [j]
+                lea esi, [esi*4 + OFFSET _a]
+                mov ecx, [l]
+                cld
+                rep movsd
+        }
+}
+void xchg(int i,int j,int l)
+{
+        __asm{
+                mov edi, [i]
+                lea edi, [edi*4 + OFFSET _a]
+                mov esi, [j]
+                lea esi, [esi*4 + OFFSET _a]
+                mov ecx, [l]
+                cld
+                _loop:
+                lodsd
+                mov ebx,[edi]
+                stosd
+                mov [esi*1-4], ebx
+                loop _loop
+        }
+}
+*/
+
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+        memset(_b,0,sizeof(_b));
+        memset(_a,0,sizeof(_a));
+        int i;
+        int n=4;
+        int e2=Edit2->Text.Length();
+        int e3=Edit3->Text.Length();
+        for(i=1; i<=n; i++)
+                _a[n-i]= (AnsiString("0x0")+Edit2->Text.SubString(e2>=8*i?e2-8*i+1:1,e2>=8*i?8:(e2-8*(i-1)>0?e2-8*(i-1):0))).ToInt();
+        for(i=1; i<=n; i++)
+                _a[n-i+n]= (AnsiString("0x0")+Edit3->Text.SubString(e3>=8*i?e3-8*i+1:1,e3>=8*i?8:(e3-8*(i-1)>0?e3-8*(i-1):0))).ToInt();
+        // n=2
+
+      /*  equ(4, 1, 1);
+        sub(4, 0, 1);
+        equ(5, 2, 1);
+        sub(5, 3, 1);
+        xchg(1, 2, 1);
+        mul(0, 1, 1);
+        mul(2, 3, 1);
+        mul(4, 5, 1);
+        add(4, 0, 2);
+        add(4, 2, 2);
+        add(1, 4, 2);    /* */
+
+
+        // n=4
+
+        equ(12, 2, 2);
+        sub(12, 0, 2);
+        equ(14, 4, 2);
+        sub(14, 6, 2);
+        xchg(2, 4, 2);
+        equ(8, 1, 1);
+        sub(8, 0, 1);
+        equ(9, 2, 1);
+        sub(9, 3, 1);
+        xchg(1, 2, 1);
+        equ(10, 5, 1);
+        sub(10, 4, 1);
+        equ(11, 6, 1);
+        sub(11, 7, 1);
+        xchg(5, 6, 1);
+        equ(16, 13, 1);
+        sub(16, 12, 1);
+        equ(17, 14, 1);
+        sub(17, 15, 1);
+        xchg(13, 14, 1);
+        mul(0, 1, 1);
+        mul(2, 3, 1);
+        mul(8, 9, 1);
+        mul(4, 5, 1);
+        mul(6, 7, 1);
+        mul(10, 11, 1);
+        mul(12, 13, 1);
+        mul(14, 15, 1);
+        mul(16, 17, 1);
+        add(8, 0, 2);
+        add(8, 2, 2);
+        add(1, 8, 2);
+        add(10, 4, 2);
+        add(10, 6, 2);
+        add(5, 10, 2);
+        add(16, 12, 2);
+        add(16, 14, 2);
+        add(13, 16, 2);
+        add(12, 0, 4);
+        add(12, 4, 4);
+        add(2, 12, 4);   /*  */
+
+        Edit4->Text="";
+
+        for(i=0; i<n+n; i++)
+                Edit4->Text=Edit4->Text+IntToHex((int)_a[i],8);
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm1::Button4Click(TObject *Sender)
+{
+ListBox1->Clear();
+//брать остатки от деления числa попалам...
+int n=Edit1->Text.Length();
+char* mem = (char*)malloc(n);
+strcpy(mem, Edit1->Text.c_str());
+Edit1->Text="";
+int startwith=0;
+for(;;)
+{
+        unsigned char number=0;
+        unsigned char mask=1;
+        for(int j=0;j<8;j++)
+        {
+                ListBox1->Items->Add(AnsiString(mem));
+                //если последняя цифра четная число чётное
+                switch(mem[n-1])
+                {
+                case '1':
+                case '3':
+                case '5':
+                case '7':
+                case '9':
+                        number=number+mask;
+                }
+                //оптимизация....
+                if(mem[startwith]=='0')startwith++;
+                // делим все цифры до первой попалам.
+                for(int k=startwith; k<n; k++)
+                {
+                        int cifra = mem[k]-'0';
+                        if(k+1<n)
+                        if((((int)(cifra/2))*2)!=cifra)
+                        if(k+1!=n)
+                        mem[k+1]=mem[k+1]+10;
+                        mem[k]='0'+(cifra/2);
+                }
+                mask=mask<<1;
+                if(mem[n-1]=='0'&&startwith>n-2)break;
+        }
+        Edit1->Text=Edit1->Text.IntToHex(number,2)+Edit1->Text;
+        if(mem[n-1]=='0'&&startwith>n-2)break;
+}
+free(mem);
+}
+//---------------------------------------------------------------------------
+

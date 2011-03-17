@@ -1,0 +1,13 @@
+C:\Documents and Settings\p\Мои документы\Visual Studio 2008\Projects\Graf\Graf\bin\Debug\Graf.exe
+C:\Documents and Settings\p\Мои документы\Visual Studio 2008\Projects\Graf\Graf\bin\Debug\Graf.pdb
+C:\Documents and Settings\p\Мои документы\Visual Studio 2008\Projects\Graf\Graf\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\p\Мои документы\Visual Studio 2008\Projects\Graf\Graf\obj\Debug\Graf.Form1.resources
+C:\Documents and Settings\p\Мои документы\Visual Studio 2008\Projects\Graf\Graf\obj\Debug\Graf.Properties.Resources.resources
+C:\Documents and Settings\p\Мои документы\Visual Studio 2008\Projects\Graf\Graf\obj\Debug\Graf.csproj.GenerateResource.Cache
+C:\Documents and Settings\p\Мои документы\Visual Studio 2008\Projects\Graf\Graf\obj\Debug\Graf.exe
+C:\Documents and Settings\p\Мои документы\Visual Studio 2008\Projects\Graf\Graf\obj\Debug\Graf.pdb
+C:\Documents and Settings\p\Мои документы\Visual Studio 2008\Projects\Graf\Graf\obj\Debug\Graf.Dialog1.resources
+G:\Князев А.В\Системное и прикладное ПО\Lab6\Graf\obj\Debug\Graf.exe
+G:\Князев А.В\Системное и прикладное ПО\Lab6\Graf\obj\Debug\Graf.pdb
+H:\Князев А.В\Системное и прикладное ПО\Lab6\Graf\obj\Debug\Graf.exe
+H:\Князев А.В\Системное и прикладное ПО\Lab6\Graf\obj\Debug\Graf.pdb

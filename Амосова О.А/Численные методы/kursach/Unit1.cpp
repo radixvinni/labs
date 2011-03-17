@@ -1,0 +1,52 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#include <math.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma link "PERFGRAP"
+#pragma resource "*.dfm"
+TForm1 *Form1;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+        : TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+double F(double x, double y)
+{
+        return (x*x+1)*y+x;
+}
+double df(double x,double y)
+{
+        return -(x*x+1)
+        /       (2*x*y+1);
+}
+double fn(double x, double y)
+{
+        double z;
+        z = y+1;
+        // есть х найдём у : F(x,y)=0
+        //for(int i=0;i<50;i++)
+        //while(fabs(F(x,y))>0.01)
+        while((fabs(y-z)>0.01))
+        {
+                z=y;
+                y=y-F(x,y)/df(x,y);
+        }
+        return y;
+}
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+        double y = 0.3;
+        for(double x=-3;x<-1;x+=0.01)
+        {
+                y=fn(x,y);
+                Chart1->Series[0]->AddXY(x,y,"",RGB(0,0,0));
+                Chart1->Series[1]->AddXY(x,(-x)/(x*x+1),"",RGB(0,0,0));
+        }
+}
+//---------------------------------------------------------------------------

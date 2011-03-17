@@ -1,0 +1,65 @@
+object Form5: TForm5
+  Left = 159
+  Top = 258
+  Width = 870
+  Height = 472
+  Caption = #1047#1072#1087#1088#1086#1089
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 862
+    Height = 25
+    Align = alTop
+    TabOrder = 0
+    object DBNavigator1: TDBNavigator
+      Left = 1
+      Top = 1
+      Width = 240
+      Height = 23
+      DataSource = DataSource1
+      Align = alLeft
+      TabOrder = 0
+    end
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 25
+    Width = 862
+    Height = 394
+    Align = alClient
+    DataSource = DataSource1
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 419
+    Width = 862
+    Height = 19
+    Panels = <>
+    SimplePanel = True
+  end
+  object DataSource1: TDataSource
+    DataSet = Query1
+    Left = 8
+    Top = 384
+  end
+  object Query1: TQuery
+    DatabaseName = '..\'
+    Left = 40
+    Top = 384
+  end
+end

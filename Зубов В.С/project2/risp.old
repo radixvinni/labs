@@ -1,0 +1,13 @@
+CLEAR
+SELECT Request
+SET TEXTMERGE ON
+SCAN FOR req_status = "заверш"
+\
+\ Уважаемый <<firstname>> <<lastname>>!
+\
+\ Ваш заказ по ремонту автомобиля <<auto_model>> 
+\ успешно завершен. Вы можете забрать свой автомобиль
+\ <<DATE()+2>>
+\
+\ Ваш автосервис
+ENDSCAN

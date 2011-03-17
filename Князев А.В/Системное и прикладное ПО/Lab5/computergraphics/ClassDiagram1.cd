@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Struct Name="Scene">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="Scene::Mesh">
+        <Compartments>
+          <Compartment Name="Nested Types" Collapsed="false" />
+        </Compartments>
+        <NestedTypes>
+          <Struct Name="Scene::Mesh::Point">
+            <TypeIdentifier>
+              <NewMemberFileName>computergraphics.cpp</NewMemberFileName>
+            </TypeIdentifier>
+          </Struct>
+          <Struct Name="Scene::Mesh::ProjectPoint" Collapsed="true">
+            <TypeIdentifier>
+              <NewMemberFileName>computergraphics.cpp</NewMemberFileName>
+            </TypeIdentifier>
+          </Struct>
+          <Struct Name="Scene::Mesh::Poly">
+            <TypeIdentifier>
+              <NewMemberFileName>computergraphics.cpp</NewMemberFileName>
+            </TypeIdentifier>
+          </Struct>
+        </NestedTypes>
+        <TypeIdentifier>
+          <NewMemberFileName>computergraphics.cpp</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAwAAAAAAAABAEAgMAAAAAAAAAw=</HashCode>
+      <FileName>computergraphics.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
