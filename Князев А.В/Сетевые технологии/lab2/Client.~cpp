@@ -3,17 +3,15 @@
 #include <vcl.h>
 #pragma hdrstop
 //---------------------------------------------------------------------------
-USEFORM("ServerForm.cpp", Form1);
-USEFORM("ServerOptions.cpp", Form4);
+USEFORM("ClientForm.cpp", Form2);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
         try
         {
                  Application->Initialize();
-                 Application->Title = "Server";
-                 Application->CreateForm(__classid(TForm1), &Form1);
-                 Application->CreateForm(__classid(TForm4), &Form4);
+                 Application->Title = "Client";
+                 Application->CreateForm(__classid(TForm2), &Form2);
                  Application->Run();
         }
         catch (Exception &exception)

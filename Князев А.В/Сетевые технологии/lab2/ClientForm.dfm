@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 565
-  Top = 148
+  Left = 301
+  Top = 146
   Width = 502
   Height = 423
   Caption = #1054#1082#1085#1086' SQL '#1082#1083#1080#1077#1085#1090#1072
@@ -28,7 +28,7 @@ object Form2: TForm2
     Width = 494
     Height = 19
     Panels = <>
-    SimplePanel = False
+    SimplePanel = True
   end
   object list: TListView
     Left = 0
@@ -73,6 +73,10 @@ object Form2: TForm2
     Top = 8
     object A1: TMenuItem
       Caption = '&'#1060#1072#1081#1083
+      object N5: TMenuItem
+        Caption = '&'#1057#1086#1077#1076#1080#1085#1080#1090#1100'...'
+        OnClick = N5Click
+      end
       object N3: TMenuItem
         Caption = '&'#1042#1099#1093#1086#1076
         OnClick = N3Click
@@ -102,7 +106,7 @@ object Form2: TForm2
     end
   end
   object ClientSocket1: TClientSocket
-    Active = True
+    Active = False
     ClientType = ctNonBlocking
     Host = 'localhost'
     Port = 70

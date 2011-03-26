@@ -4,12 +4,12 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="Server.exe"/>
-    <OBJFILES value="Server.obj ServerForm.obj"/>
+    <OBJFILES value="Server.obj ServerForm.obj ServerOptions.obj"/>
     <RESFILES value="Server.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) ServerForm.dfm"/>
+    <RESDEPEN value="$(RESFILES) ServerForm.dfm ServerOptions.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value=""/>
     <SPARELIBS value="vcl.lib rtl.lib"/>
@@ -56,6 +56,7 @@
       <FILE FILENAME="Server.res" FORMNAME="" UNITNAME="Server.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Server.cpp" FORMNAME="" UNITNAME="Server" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ServerForm.cpp" FORMNAME="Form1" UNITNAME="ServerForm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ServerOptions.cpp" FORMNAME="Form4" UNITNAME="ServerOptions" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

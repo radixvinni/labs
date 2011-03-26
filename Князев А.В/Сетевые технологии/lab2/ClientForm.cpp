@@ -22,6 +22,7 @@ MessageBoxA(Form2->Handle,"Модель SQL-клиента.\r\nВинников А. М., гр. А-14-07\r\
 
 void __fastcall TForm2::N3Click(TObject *Sender)
 {
+ClientSocket1->Close();
 Form2->Close();
 }
 //---------------------------------------------------------------------------
@@ -62,6 +63,8 @@ void __fastcall TForm2::ClientSocket1Read(TObject *Sender,
                 lc->Caption=s.SubString(pos1,pos-pos1);
         }
         //show rows
+        int rows=0;
+        list->Items->Clear();
         while(pos<=len)
         {
            pos++;
@@ -69,6 +72,7 @@ void __fastcall TForm2::ClientSocket1Read(TObject *Sender,
            int pos1=pos;
            for(;s[pos]!='\t'&&s[pos]!='\n';pos++){}
            li->Caption=s.SubString(pos1,pos-pos1);
+           rows++;
            while(pos<=len&&s[pos]!='\n')
            {
                 pos++;
@@ -76,6 +80,23 @@ void __fastcall TForm2::ClientSocket1Read(TObject *Sender,
                 for(;pos<=len&&s[pos]!='\t'&&s[pos]!='\n';pos++){}
                 li->SubItems->Add(s.SubString(pos1,pos-pos1));
            }
+        }
+        if(rows)
+        StatusBar1->SimpleText="Ресультатов: "+AnsiString(rows);
+        else
+        StatusBar1->SimpleText="Нет результата. Пусто";
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::N5Click(TObject *Sender)
+{
+        if(Form3->ShowModal()==mrOk)
+        {
+                ClientSocket1->Host=Form3->Edit1->Text;
+                ClientSocket1->Port=Form3->Edit2->Text.ToInt();
+                ClientSocket1->Open();
+                StatusBar1->SimpleText="Соединено";
         }
 }
 //---------------------------------------------------------------------------

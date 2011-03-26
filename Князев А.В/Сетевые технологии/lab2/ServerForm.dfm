@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 358
-  Top = 152
-  Width = 352
+  Left = 648
+  Top = 154
+  Width = 536
   Height = 276
   Caption = #1054#1082#1085#1086' SQL '#1089#1077#1088#1074#1077#1088#1072
   Color = clBtnFace
@@ -17,15 +17,15 @@ object Form1: TForm1
   object StatusBar1: TStatusBar
     Left = 0
     Top = 203
-    Width = 344
+    Width = 528
     Height = 19
     Panels = <>
-    SimplePanel = False
+    SimplePanel = True
   end
   object ListBox1: TListBox
     Left = 0
     Top = 0
-    Width = 344
+    Width = 528
     Height = 203
     Align = alClient
     Font.Charset = ANSI_CHARSET
@@ -38,10 +38,14 @@ object Form1: TForm1
     TabOrder = 1
   end
   object ServerSocket1: TServerSocket
-    Active = True
+    Active = False
     Port = 70
     ServerType = stNonBlocking
+    OnAccept = ServerSocket1Accept
+    OnClientConnect = ServerSocket1ClientConnect
+    OnClientDisconnect = ServerSocket1ClientDisconnect
     OnClientRead = ServerSocket1ClientRead
+    OnClientError = ServerSocket1ClientError
     Left = 24
     Top = 24
   end
@@ -50,6 +54,14 @@ object Form1: TForm1
     Top = 24
     object N1: TMenuItem
       Caption = #1060#1072#1081#1083
+      object N5: TMenuItem
+        Caption = '&'#1057#1090#1072#1088#1090' '#1089#1077#1088#1074#1077#1088#1072
+        OnClick = N5Click
+      end
+      object N6: TMenuItem
+        Caption = #1054#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1089#1077#1088#1074#1077#1088
+        OnClick = N6Click
+      end
       object N4: TMenuItem
         Caption = #1042#1099#1093#1086#1076
         OnClick = N4Click
