@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 301
-  Top = 146
+  Left = 418
+  Top = 143
   Width = 502
   Height = 423
   Caption = #1054#1082#1085#1086' SQL '#1082#1083#1080#1077#1085#1090#1072
@@ -17,15 +17,15 @@ object Form2: TForm2
   object Splitter1: TSplitter
     Left = 0
     Top = 65
-    Width = 494
+    Width = 486
     Height = 3
     Cursor = crVSplit
     Align = alTop
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 350
-    Width = 494
+    Top = 346
+    Width = 486
     Height = 19
     Panels = <>
     SimplePanel = True
@@ -33,8 +33,8 @@ object Form2: TForm2
   object list: TListView
     Left = 0
     Top = 68
-    Width = 494
-    Height = 282
+    Width = 486
+    Height = 278
     Align = alClient
     Columns = <
       item
@@ -55,7 +55,7 @@ object Form2: TForm2
   object Memo1: TMemo
     Left = 0
     Top = 0
-    Width = 494
+    Width = 486
     Height = 65
     Align = alTop
     Font.Charset = ANSI_CHARSET

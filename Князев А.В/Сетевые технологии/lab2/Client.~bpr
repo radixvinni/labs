@@ -4,12 +4,12 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="Client.exe"/>
-    <OBJFILES value="Client.obj ClientForm.obj"/>
+    <OBJFILES value="Client.obj ClientForm.obj ClientOptions.obj"/>
     <RESFILES value="Client.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) ClientForm.dfm"/>
+    <RESDEPEN value="$(RESFILES) ClientForm.dfm ClientOptions.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value=""/>
     <SPARELIBS value="vcl.lib rtl.lib"/>
@@ -56,6 +56,7 @@
       <FILE FILENAME="Client.res" FORMNAME="" UNITNAME="Client.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Client.cpp" FORMNAME="" UNITNAME="Client" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ClientForm.cpp" FORMNAME="Form2" UNITNAME="ClientForm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ClientOptions.cpp" FORMNAME="Form3" UNITNAME="ClientOptions" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

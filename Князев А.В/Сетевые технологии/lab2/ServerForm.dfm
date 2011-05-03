@@ -16,8 +16,8 @@ object Form1: TForm1
   TextHeight = 13
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 203
-    Width = 528
+    Top = 199
+    Width = 520
     Height = 19
     Panels = <>
     SimplePanel = True
@@ -25,8 +25,8 @@ object Form1: TForm1
   object ListBox1: TListBox
     Left = 0
     Top = 0
-    Width = 528
-    Height = 203
+    Width = 520
+    Height = 199
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText

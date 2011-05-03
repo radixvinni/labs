@@ -79,7 +79,6 @@ void __fastcall TForm2::ClientSocket1Read(TObject *Sender,
                 int pos1=pos;
                 for(;pos<=len&&s[pos]!='\t'&&s[pos]!='\n';pos++){}
                 li->SubItems->Add(s.SubString(pos1,pos-pos1));
-                rows++;
            }
         }
         if(rows)
