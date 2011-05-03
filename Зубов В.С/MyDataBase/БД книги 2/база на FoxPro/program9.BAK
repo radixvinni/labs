@@ -1,0 +1,46 @@
+CLEAR
+SET DEFA TO "D:\база на FoxPro"
+&& Создаём вертикальное FOX-меню
+DECLARE MYMENU[5]
+MYMENU[1]="Выбрать всю учебную литературу "
+MYMENU[2]="Выбрать все книги"
+MYMENU[3]="Выбрать не учебную литературу"
+MYMENU[4]="\-"
+MYMENU[5]="В\<ыход"
+@0,0 MENU MYMENU,5 TITLE "Вертикальное меню"
+Do WHILE .T. &&пока не нажато "выход"
+   READ MENU TO n SAVE
+     DO CASE
+         CASE n=1 
+              SELECT maintable.book_name AS "Название",;
+              maintable.imprintdat AS "Дата",;
+              imprinttowntable.town AS"Город",;
+              publishingtable.publishing AS"Издательство";
+              From maintable,imprinttowntable,publishingtable;
+              Where  ((maintable.town_cod=imprinttowntable.town_cod);
+              AND(maintable.publ_cod=publishingtable.publ_cod) ;
+              AND (maintable.genre_cod=1));
+              ORDER BY maintable.imprintdat
+        CASE  n=2
+              SELECT maintable.book_name AS "Название",;
+              maintable.imprintdat AS "Дата",;
+              imprinttowntable.town AS"Город",;
+              publishingtable.publishing AS"Издательство";
+              From maintable,imprinttowntable,publishingtable;
+              Where  ((maintable.town_cod=imprinttowntable.town_cod);
+              AND(maintable.publ_cod=publishingtable.publ_cod));
+              ORDER BY maintable.imprintdat
+        CASE  n=3   
+              SELECT maintable.book_name AS "Название",;
+              maintable.imprintdat AS "Дата",;
+              imprinttowntable.town AS"Город",;
+              publishingtable.publishing AS"Издательство";
+              From maintable,imprinttowntable,publishingtable;
+              Where  ((maintable.town_cod=imprinttowntable.town_cod);
+              AND(maintable.publ_cod=publishingtable.publ_cod) ;
+              AND NOT (maintable.genre_cod=1));
+              ORDER BY maintable.imprintdat
+        CASE  n=5
+              EXIT
+   ENDCASE               
+ENDDO                

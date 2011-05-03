@@ -1,0 +1,52 @@
+Set DEFA TO c:\ALANsProgs\work\FoxPro\MyLastDB\
+&& Пример иерархического dBASE-меню
+name_dbf=""	 && Переменная для хранения имени выбранной базы данных 	
+
+&& Создание вертикальных меню
+&& Подменю выбора базы данных
+DEFINE POPUP Select_dbf;
+PROMPT FILES LIKE *.dbf
+ON SELECTION POPUP Select_dbf DO proc_select
+
+&& Подменю работы с базой данных
+DEFINE POPUP Browse_dbf
+DEFINE BAR 1 OF Browse_dbf PROMPT "Вывод всех";
+SKIP FOR name_dbf==""
+ON SELECTION BAR 1 OF Browse_dbf DO proc_browse
+DEFINE BAR 2 OF Browse_dbf PROMPT "Вывод инженеров";
+SKIP FOR name_dbf!="table1"
+ON SELECTION BAR 2 OF Browse_dbf DO proc_eng
+
+&& Основное меню
+DEFINE MENU glav_menu
+DEFINE PAD Select_dbf_g OF glav_menu PROMPT "Выбор таблицы"
+DEFINE PAD Browse_dbf_g OF glav_menu PROMPT "Вывод таблицы"
+DEFINE PAD Exit_g OF glav_menu PROMPT "Выход"
+
+&& Активация
+ON PAD Select_dbf_g OF glav_menu ACTIVATE POPUP Select_dbf
+ON PAD Browse_dbf_g OF glav_menu ACTIVATE POPUP Browse_dbf
+ON SELECTION PAD Exit_g OF glav_menu DEACTIVATE MENU glav_menu
+
+ACTIVATE MENU glav_menu 
+RELEASE MENUS glav_menu EXTENDED
+
+
+
+&& Реакции на выбор меню и подменю
+&& Реаакция на выбор в подменю select_dbf
+PROCEDURE proc_select
+  PARAM n	
+	name_dbf=Prompt()
+	n=Rat("\",name_dbf)
+	name_dbf=Substr(name_dbf,n+1)
+ENDPROC
+&& Реаакция на выбор в подменю browse_dbf пункт 1
+PROCEDURE proc_browse
+	SELECT * FROM &name_dbf
+ENDPROC
+&& Реаакция на выбор в подменю browse_dbf пункт 2
+PROCEDURE proc_eng
+	SET SKIP OF BAR 2 OF BROWSE DBF name_dbf="table_employee"
+	SELECT * FROM &name_dbf a WHERE Upper(a.post)="ИНЖЕНЕР"
+ENDPROC

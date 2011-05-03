@@ -1,0 +1,13 @@
+CLEAR
+
+SET DEFA TO H:\
+
+SELECT 1
+USE main AGAIN ALIAS nazvanie
+
+BROWSE NOEDIT nazvanie "Комедии";
+FIELDS Nazvanie :H="Название",regesser:H="Режиссер",;
+cinema :H="Кинокомпания",;
+zhanr:H="Жанр" FOR Like("*omedy*",zhanr)
+
+BROWSE

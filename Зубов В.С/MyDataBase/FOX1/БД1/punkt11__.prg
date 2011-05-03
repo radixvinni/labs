@@ -1,0 +1,51 @@
+Set DEFA TO H:\FOX1\БД1
+&& Пример иерархического dBASE-меню
+&& Переменная для хранения имени выбранной базы данных 	
+BaseName = ""	 
+
+&& Создание вертикальных меню
+&& Подменю выбора базы данных
+DEFINE POPUP ChooseBase;
+PROMPT FILES LIKE *.dbf
+ON SELECTION POPUP ChooseBase DO proc_select
+
+&& Подменю работы с базой данных
+DEFINE POPUP BrowseBase
+DEFINE BAR 1 OF BrowseBase PROMPT "Вывод всех";
+SKIP FOR BaseName==""
+ON SELECTION BAR 1 OF BrowseBase DO proc_all
+DEFINE BAR 2 OF BrowseBase PROMPT "Вывод игрушек Hallmark";
+SKIP FOR BaseName!="main"
+ON SELECTION BAR 2 OF BrowseBase DO proc_ast
+
+&& Основное меню
+DEFINE MENU MainMenu
+DEFINE PAD ChooseBase_g OF MainMenu PROMPT "Выбор таблицы"
+DEFINE PAD BrowseBase_g OF MainMenu PROMPT "Вывод таблицы"
+DEFINE PAD Exit_g OF MainMenu PROMPT "Выход"
+
+&& Активация
+ON PAD ChooseBase_g OF MainMenu ACTIVATE POPUP ChooseBase
+ON PAD BrowseBase_g OF MainMenu ACTIVATE POPUP BrowseBase
+ON SELECTION PAD Exit_g OF MainMenu DEACTIVATE MENU MainMenu
+
+ACTIVATE MENU MainMenu 
+RELEASE MENUS MainMenu EXTENDED
+
+&& Реакции на выбор меню и подменю
+&& Реаакция на выбор в подменю ChooseBase
+PROCEDURE proc_select
+  PARAM n	
+	BaseName=Prompt()
+	n=Rat("\",BaseName)
+	BaseName=Substr(BaseName,n+1)
+ENDPROC
+&& Реакция на выбор в подменю BrowseBase пункт 1
+PROCEDURE proc_all
+	SELECT * FROM &BaseName
+ENDPROC
+&& Реакция на выбор в подменю BrowseBase пункт 2
+PROCEDURE proc_ast
+	SET SKIP OF BAR 2 OF BROWSE DBF BaseName="main"
+	SELECT * FROM &BaseName a WHERE a.firm_name="Hallmark"
+ENDPROC

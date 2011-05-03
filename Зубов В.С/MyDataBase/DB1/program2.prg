@@ -1,0 +1,38 @@
+&& Пункт 9
+CLEAR
+SET DEFA TO D:\6sem\MyDataBase\lab1\
+
+&& Соединение таблиц Models и Firms (упорядочивание по фирме)
+SELECT mname, tipe, quantity, price, opinion, fname, address FROM models, firms;
+WHERE id_firm=f_id ORDER BY firm
+
+&& Группирование и посчет количества товаров каждого типа
+SELECT mname, Sum(quantity) FROM models;
+WHERE quantity>0 GROUP BY mname ORDER BY tipe
+
+&& Использование HAVING
+SELECT mname, firm, tipe, price, address FROM models, firms;
+WHERE f_id=id_firm HAVING mname="Музыкальный центр"
+
+&& Использование курсора
+SELECT firm, Sum(price) FROM models WHERE quantity>0 GROUP BY firm INTO CURSOR Cu
+SELECT * FROM Cu
+SELECT tipe AS "Тип", Sum(Sum_Price)*quantity  AS "Сумма" FROM models m, Cu WHERE m.firm=Cu.firm GROUP BY tipe
+
+&&Создание новой таблицы и добавление элементов в нее
+
+CREATE DBF Test(model C(40), firm C(10), quantity I(4))
+INSERT INTO Test (model, firm, quantity);
+VALUES ("Телевизор KV-BZ21M81","Sony",10)
+INSERT INTO Test (model, firm, quantity);
+VALUES ("Телевизор KV-BZ21M71","Sony",7)
+INSERT INTO Test (model, firm, quantity);
+VALUES ("Видеокамера GR-GF470 E","JVC",10)
+INSERT INTO Test (model, firm, quantity);
+VALUES ("Музыкальный центр EX-D1","JVC",10)
+INSERT INTO Test (model, firm, quantity);
+VALUES ("Видеокамера DCR-HC32 E","Sony",11)
+
+SELECT * FROM TestBase ORDER BY firm
+CLOSE TABLES ALL
+ERASE ("Test.dbf")

@@ -1,0 +1,51 @@
+  CLEAR
+  SET DEFA TO "D:\база на FoxPro"
+  && Пример иерархического меню
+  &&Переменная для хранения имени выбранной таблицы
+  TablName=""
+  &&Создание вертикальных меню
+  && Подменю выбора таблицы
+  DEFINE POPUP ChooseTable;
+  PROMPT FILES LIKE *.dbf
+  ON SELECTION POPUP ChooseTable DO proc_select
+
+  && Подменю работы с таблицами
+  DEFINE POPUP BrowseTabl
+  DEFINE BAR 1 OF BrowseTabl PROMPT "Вывод всех";
+  SKIP FOR TableName==""
+  ON SELECTION BAR 1 OF BrowseTabl DO proc_all
+  DEFINE BAR 2 OF BrowseTabl PROMPT "Вывод всех книг изданных в 2004 году";
+  SKIP FOR TableName=="maintable"
+  ON SELECTION BAR 2 OF BrowseTabl DO proc_ast
+
+  &&Основное меню
+  DEFINE MENU MAINMENU
+  DEFINE PAD ChooseTable_g OF MAINMENU PROMPT"Выбор таблицы"
+  DEFINE PAD BrowseTabl_g OF MAINMENU PROMPT"Вывод таблицы"
+  DEFINE PAD Exit_g OF MAINMENU PROMPT"Выход"
+
+  && Активация
+  ON PAD ChooseTable_g OF MAINMENU ACTIVATE POPUP ChooseTable
+  ON PAD BrowseTabl_g OF MAINMENU ACTIVATE POPUP BrowseTabl
+  ON SELECTION PAD Exit_g OF MAINMENU DEACTIVATE MENU MAINMENU
+
+  ACTIVATE MENU MAINMENU
+  RELEASE MENUS EXTENDED
+
+  &&Реакция на выбор меню и подменю 
+  &&Реакция на выбор в подменю CooseTable
+  PROCEDURE proc_select
+  PARAM n
+        TableName=Prompt()
+        n=Rat("\",TableName)
+        TableName=Substr(TableName,n+1)
+  ENDPROC
+  &&Реакция на выбор в подменю BrowseTabl пункта 1
+  PRoCEDURE proc_all
+   SELECT *From &TableName
+  ENDPROC
+  &&Реакция на выбор в подменю BrowseTabl пункта 2       
+  PRoCEDURE proc_ast
+   SET SKIP OF Bar 2 OF Browse TABLE TableName="maintable"
+   SELECT *FROM &TableName a Where a.imprintdat=2004
+  ENDPROC 

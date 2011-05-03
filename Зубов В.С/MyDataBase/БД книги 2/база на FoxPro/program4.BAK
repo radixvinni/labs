@@ -1,0 +1,11 @@
+CLEAR
+SET DEFA TO "D:\база на FoxPro"
+SELECT 1&&and and  and  and&&
+USE maintable AGAIN ALIAS tabmain
+BROWSE NOEDIT TITLE "Имеются 3 издания книг";
+FIELDS  book_nam :H="Название книги",;
+         numtoms :H="Число томов",;
+              tom:H="Номер тома",;
+           copies:H="Сколько таких книг есть в наличие",;
+           about :H="Анонс"FOR LIKE("*Издание третье*",about)
+BROWSE           

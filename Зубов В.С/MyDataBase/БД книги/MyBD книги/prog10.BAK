@@ -1,0 +1,31 @@
+SET DEFA TO D:\Downloads\БДЭС\MyBD
+&& Создадим вертикальное FOX-меню
+
+DECLARE MyMenu[5]
+MyMenu[1] = " Выбрать иностранные книги "
+MyMenu[2] = " Выбрать российские книги "
+MyMenu[3] = " Выбрать все книги "
+MyMenu[4] = "\-"
+MyMenu[5] = " В\<ыход "
+
+@ 0,0 MENU MyMenu,5 TITLE "Вертикальное меню" 
+
+DO WHILE .T.  && т.е. пока не нажмем "Выход"
+	READ MENU TO n SAVE
+	DO CASE
+		CASE n=1
+			SELECT a.title AS "Название",a.auth_surname AS "Автор",b.country AS "Страна";
+			FROM main a, Authorinfo b WHERE ((a.author_id=b.author_id) AND NOT (b.country = "Россия"));
+			ORDER BY a.title
+		CASE n=2
+			SELECT a.title AS "Название",a.auth_surname AS "Автор",b.country AS "Страна";
+			FROM main a, Authorinfo b WHERE ((a.author_id=b.author_id) AND (b.country = "Россия");
+			ORDER BY a.title
+		CASE n=3
+			SELECT a.title AS "Название",a.auth_surname AS "Автор",b.country AS "Страна";
+			FROM main a, Authorinfo b WHERE ((a.author_id=b.author_id);
+			ORDER BY a.title
+		CASE n=5
+			EXIT
+	ENDCASE
+ENDDO

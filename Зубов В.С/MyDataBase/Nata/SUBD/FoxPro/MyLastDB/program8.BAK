@@ -1,0 +1,52 @@
+&& Создаем сложные индекс файл
+Set DEFA TO c:\ALANsProgs\work\FoxPro\MyLastDB\
+clear
+select 1
+
+WAIT WINDOW ' Индексируем по полям "firm" и "cena" (нажмите клавишу)'
+
+use table1 IN 1 AGAIN alias main
+INDEX ON Upper(firm)+str(cena) TO serious_indx
+
+BROWSE TITLE "Автомобили отсортированные по;
+ Производитель+цена"
+ 
+SET ORDER TO				&& снять индексацию
+
+WAIT WINDOW 'Реализуем переключение индексов'
+
+&& Реализуем переключение индексов
+INDEX ON Upper(firm) TO firm_ind1
+INDEX ON str(cena) TO cena_ind
+INDEX ON Upper(title) TO title_ind
+USE table1 AGAIN alias main INDEX firm_ind1,cena_ind,title_ind
+
+WAIT WINDOW 'Индексируем по производителю'
+SET ORDER TO 1
+? "Текущая запись при индексировании по производителю",Recno(),title
+BROWSE TITLE "Автомобили проиндексированные по произвлдителю"
+
+WAIT WINDOW 'Индексируем по цене'
+SET ORDER TO 2
+? "Текущая запись при индексировании по цене",Recno(),title
+BROWSE TITLE "Автомобили проиндексированные по цене"
+
+WAIT WINDOW 'Индексируем по названию'
+SET ORDER TO 3
+? "Текущая запись при индексировании по названию",Recno(),title
+BROWSE TITLE "Автомобили проиндексированные по названию"
+
+WAIT WINDOW 'Выполним быстрый поиск автомобиля с названием SkyLine'
+?
+? "Выполним быстрый поиск автомобиля с названием SkyLine"
+key_=Upper("SkyLine")
+SEEK key_
+IF Found()
+	? firm,title,cena
+	WAIT WINDOW firm+title+cena
+ELSE 
+	? "Такого автомобиля в базе нет!"
+	WAIT WINDOW 'Такого автомобиля в базе нет!'
+ENDIF
+
+*BROWSE

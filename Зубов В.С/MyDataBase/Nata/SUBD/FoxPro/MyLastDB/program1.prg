@@ -1,0 +1,17 @@
+Set DEFA TO c:\ALANsProgs\work\FoxPro\MyLastDB\
+clear
+select 1
+
+use table1 IN 1 AGAIN alias main
+INDEX ON number TO main_indx
+
+SELECT 2
+USE table3 AGAIN
+INDEX ON number TO table3_indx
+
+SET RELATION TO number INTO main
+list main->title,main->cena,motortype
+
+BROWSE NOEDIT TITLE "Машины" PARTITION 45 LEDIT;
+FIELDS main->title:H="Название",motortype:H="Тип мотора",;
+main->cena:H="Цена",hs:H="Лош.сил"

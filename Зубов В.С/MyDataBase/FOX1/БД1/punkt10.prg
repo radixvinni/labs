@@ -1,0 +1,21 @@
+SET DEFA TO H:\FOX1\БД1
+
+CLEAR
+SELECT 1
+
+USE main AGAIN ALIAS toys
+DEFINE WINDOW New FROM 1,1 TO 30,100 SYSTEM CLOSE FLOAT GROW MINIMIZE ZOOM
+SHOW WINDOW New
+
+&& Пример использования EDIT
+EDIT FIELDS izdelie:20:R:H="Изделие",firm_name:10:R:H="фирма";
+FOR firm_name="Nikki";
+FONT 'Verdana',10 STYLE 'B' PARTITION 40 LEDIT TITLE "Игрушки Nikki" IN New
+
+&& Пример использования BROWSE
+BROWSE FIELDS izdelie:20:R:H="Изделие",price:10:R:H="Цена",;
+izdelie:10:R:H="Изделие" FOR price=560;
+STYLE 'B' Title "Игрушки за 560 р" IN New
+
+HIDE WINDOW New
+BROWSE

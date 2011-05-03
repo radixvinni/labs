@@ -1,0 +1,55 @@
+CLEAR
+SET DEFA TO H:\БД2
+
+&& 1 Выберем фильмы, выпущенные между 2000 и 2005 годами
+SELECT nazvanie AS "Название",cinema AS "Издатель", god AS "Год" FROM main;
+WHERE god BETWEEN 2000 AND 2005 ORDER BY nazvanie
+
+&& 2 Выпишем всех авторов и количество их книг, сгруппировав по авторам
+SELECT regeser_info.familiya,regeser_info.name, Sum(video.edition),;
+video.god FROM regeser_info, video;
+WHERE regeser_info.regesser_id = regeser_info.regesser_id AND regeser_info.regesser_id=video.regesser_id;
+GROUP BY regeser_info.familiya;
+ORDER BY regeser_info.familiya ASC
+
+
+&& 3 Используем атрибут HAVING, выберем инфо об российский режиссерах
+SELECT a.nazvanie AS "Название", a.regesser AS "Фамилия",;
+COUNT(a.nazvanie) AS "Кол-во книг",  b.country AS "Страна"; 
+FROM main a, regeser_info b GROUP BY  a.regesser  WHERE a.regesser_id = b.regesser_id;
+HAVING b.сountry = "Россия" 
+
+ 
+
+&& 4 Используем атрибут DISTINCT
+SELECT DISTINCT a.familiya AS "Режиссеры" FROM  regeser_info a, video b;
+WHERE a.regesser_id = b.regesser_id ORDER BY a.familiya DESC
+
+&& 5 Считаем средние значения
+SELECT a.nazvanie AS "название",Sum(a.edition) AS "кол-во";
+FROM video a WHERE a.edition > (SELECT AVG(b.edition);
+FROM video b) ORDER BY a.nazvanier DESC
+
+
+
+
+
+&& 6 Выведем данные в новую таблицу
+SELECT a.nazvanie, b.familiya, b.familiya, c.country FROM;
+main a, regeser_info b, video c WHERE a.regesser_id = b.regesser_id;
+AND b.regesser_id = c.regesser_id INTO DBF NewTable ORDER BY c.сountry DESC
+CLOSE DATABASES
+SELECT * FROM NewTable
+
+&&Создадим новую таблицу и заполним ее 
+CREATE DBF TestBase( nazvanie C(30), regesser C(50),god I(4))
+INSERT INTO TestBase (nazvanie, regesser, god);
+VALUES ("Бумер2","Буслов",1999)
+INSERT INTO TestBase (nazvanie, regesser, god);
+VALUES ("Пятый элемент","Люк Бессон",1996)
+INSERT INTO TestBase (nazvanie,regesser, god);
+VALUES ("Аферисты","Дин Паризо",2005)
+INSERT INTO TestBase (nazvanie, regesser, god);
+VALUES ("Жесть","Денис Нейман",2002)
+CLOSE DATABASES
+SELECT * FROM TestBase ORDER BY regesser

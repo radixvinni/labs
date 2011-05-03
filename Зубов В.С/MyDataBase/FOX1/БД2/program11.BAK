@@ -1,0 +1,31 @@
+SET DEFA TO E:\FOX1\БД2\
+&& Создадим вертикальное FOX-меню
+
+DECLARE MyMenu[5]
+MyMenu[1] = " Выбрать иностранные фильмы "
+MyMenu[2] = " Выбрать российские фильмы "
+MyMenu[3] = " Выбрать все книги "
+MyMenu[4] = "\-"
+MyMenu[5] = " В\<ыход "
+
+@ 0,0 MENU MyMenu,5 TITLE "Вертикальное меню" 
+
+DO WHILE .T.  && т.е. пока не нажмем "Выход"
+	READ MENU TO n SAVE
+	DO CASE
+		CASE n=1
+			SELECT a.nazvanie AS "Название", a.regesser AS "режиссер",b.country AS "Страна";
+			FROM main a, video b WHERE ((a.regesser_id=b.regesser_id) AND NOT (b.country = "Россия"));
+			ORDER BY a.regesser
+		CASE n=2
+			SELECT a.nazvanie AS "Название", b.familiya AS "режиссер", b.country AS "Страна";
+			FROM main a, regeser_info b WHERE ((a.regesser_id=b.regesser_id) AND (b.country = "Россия"));
+			ORDER BY a.nazvanie
+		CASE n=3
+			SELECT a.nazvanie AS "Название",a.regesser AS "режиссер",b.country AS "Страна";
+			FROM main a, video b WHERE a.regesser_id=b.regesser_id;
+			ORDER BY a.regesser
+		CASE n=5
+			EXIT
+	ENDCASE
+ENDDO

@@ -1,0 +1,26 @@
+Set DEFA TO c:\ALANsProgs\work\FoxPro\MyLastDB\
+clear
+select 1
+
+USE table1 AGAIN ALIAS main
+
+DEFINE WINDOW Okno FROM 2,2 TO 40,100 SYSTEM CLOSE FLOAT GROW MINIMIZE ZOOM
+SHOW WINDOW Okno
+
+&& Пример использования EDIT
+EDIT FIELDS firm:10:R:H="Фирма",title:10:R:H="Название";
+FOR Upper(firm)="GAZ";
+FONT 'Verdana',12 STYLE 'B' PARTITION 25 LEDIT TITLE "Автомобила GAZ" IN Okno
+
+&& Некоторый пример использования BROWSE
+BROWSE FIELDS title:12:R:H="Название",cena:10:R:H="Цена";
+FOR Upper(firm)=Upper("Nissan");
+STYLE 'B' TITLE "Автомобили фирмы Nissan" IN Okno
+
+* PARTITION 33 REDIT
+
+hide window okno
+BROWSE
+
+
+ 

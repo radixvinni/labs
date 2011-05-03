@@ -1,0 +1,4 @@
+SELECT DISTINCT Main.title, Main.cena, Main.firm, Table4.country;
+ FROM  data1!main INNER JOIN data1!table4 ;
+   ON  Main.firm = Table4.firm;
+ ORDER BY Main.title

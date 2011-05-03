@@ -1,0 +1,9 @@
+SELECT Table_employee.family_name, Table_employee.name_,;
+  Table_employee.otchestvo, COUNT(Table_children.child_name),;
+  Table_employee.birthday;
+ FROM  zad_#16!table_children INNER JOIN zad_#16!table_employee ;
+   ON  Table_children.parent_ = Table_employee.parent_;
+ GROUP BY Table_employee.parent_;
+ HAVING COUNT(Table_children.child_name) >=2 = .T.;
+ ORDER BY Table_employee.family_name, Table_employee.name_,;
+  Table_employee.otchestvo

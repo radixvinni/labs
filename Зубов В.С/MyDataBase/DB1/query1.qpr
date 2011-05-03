@@ -1,0 +1,5 @@
+SELECT Models.mname, Models.firm, Models.tipe, Models.price, Firms.address,;
+  Firms.fname;
+ FROM  data1!firms INNER JOIN data1!models ;
+   ON  Firms.f_id = Models.id_firm;
+ ORDER BY Models.mname, Models.firm

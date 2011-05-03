@@ -1,0 +1,6 @@
+SELECT DISTINCT Table_employee.family_name, Table_employee.name_,;
+  Table_employee.otchestvo, Table_employee.pay;
+ FROM zad_#16!table_employee, zad_#16!table_children;
+ WHERE Table_employee.pay > 20000;
+ ORDER BY Table_employee.family_name, Table_employee.name_,;
+  Table_employee.otchestvo

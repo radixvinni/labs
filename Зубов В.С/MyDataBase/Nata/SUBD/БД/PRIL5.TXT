@@ -1,0 +1,49 @@
+                                                 Приложение 5
+
+           Системные установки FOXPRO (команды SET)
+-----------------------------------------------------------------------
+ Ключевое слово  Значение параметра  Ключевое слово  Значение параметра
+-----------------------------------------------------------------------
+ ALTERNATE          TO <Имя файла>     FIXED            off | ON
+ ALTERNATE          OFF | on           FORMAT           TO <Имя файла>
+ ANSI               OFF | on           FULLPATH         off | ON 
+ AUTOSAVE           OFF | on           HEADING          off | ON
+ BELL               off | ON           HELP             off | ON 
+ BELL              TO <Част.><Длит>    HELP            TO <Имя файла>
+ BLINK              off | ON           HOURS           TO [12 | 24]
+ BLOCKSIZE         TO  <ВырN>          INTENSITY        off | ON
+ BORDER            TO  <Тип рамки>     LOCK             OFF | on 
+ BRSTATUS           OFF | on           LOGERRORS        off | ON
+ CARRY              OFF | on           MACKEY          TO <ВырC>
+ CENTURY            OFF | on           MARGIN          TO <ВырN>
+ CLEAR              off | ON           MARK            OF...<Символ>
+ CLOCK              OFF | on           MEMOWIDTH       TO <ВырN>
+ CLOCK             TO<строка>,<кол.>   MOUSE           TO <ВырN>
+ COLOR             OF <Атрибут>        MOUSE            off | ON
+ COLOR             TO<Цветовые пары>   NEAR             OFF | on
+ COLOR OF SCHEME   <ВырN><Список пар>  NOTIFY           off | ON
+ COLOR SET         TO<Имя цвет.набора> ODOMETER        TO <ВырN> 
+ COMPATIBLE         OFF | on           OPTIMIZE         off | ON
+ CONFIRM            OFF | on           PATH            TO <Маршрут>
+ CONSOLE            off | ON           POINT           TO <Символ>
+ CURRENCY          TO<Денежный символ> PRINTER          off | ON
+ CURRENCY           LEFT | right       PRINTER         TO <Имя файла>
+ CURSOR             off | ON           RESOURSE         off | ON
+ DATE              <Формат даты>       RESOURSE        TO <Имя файла>
+ DEBUG              off | ON           SAFETY           off | ON
+ DECIMALS          TO<Число знаков>    SCOREBOARD       OFF | on
+ DEFAULT           TO<Диск/директория> SEPARATOR       TO <Символ>
+ DELETED            off | ON           SPACE            off | ON 
+ DELIMITERS         off | ON           STATUS           OFF | on
+ DELIMITERS        TO <ВырC>| DEFAULT  STEP             OFF | on
+ DEVELOPMENT        off | ON           STICKY           off | ON
+ DEVICE            TO SCREEN|print     SYSMENU          off | ON
+ DISPLAY           TO <Тип дисплея>    TALK             off | ON
+ ECHO               OFF | on           TABS            TO <ВырC> 
+ ESCAPE             off | ON           TEXTMERGE        OFF | on
+ EXACT              OFF | ON           TRBETWEEN        off | ON
+ EXCLUSIVE          off | ON           TYPEAHEAD       TO <ВырN> 
+ FIELDS            TO <Список полей>   UDFPARMS        VALUE|reference
+                                       UNIQUE           OFF | on
+
+  

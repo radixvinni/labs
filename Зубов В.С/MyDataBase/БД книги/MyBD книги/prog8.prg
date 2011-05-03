@@ -1,0 +1,49 @@
+CLEAR
+SET DEFA TO D:\Downloads\БДЭС\MyBD
+
+&& 1 Выберем книги, выпущенные между 2000 и 2004 годами
+SELECT Title AS "Название",Publisher AS "Издатель", Year AS "Год" FROM main;
+WHERE Year BETWEEN 2000 AND 2004 ORDER BY Title
+
+&& 2 Выпишем всех авторов и количество их книг, сгруппировав по авторам
+SELECT Authors.Surname, Authors.Name, Sum(main.edition),;
+Authorinfo.birthdate FROM Authors, main, Authorinfo;
+WHERE Authors.Author_id = Authorinfo.Author_id AND Authors.Author_id=main.Author_id;
+GROUP BY Authors.Surname;
+ORDER BY Authors.Surname ASC
+
+&& 3 Используем атрибут HAVING, выберем инфо об американских писателях
+SELECT a.Title AS "Название", a.auth_surname AS "Фамилия",;
+COUNT(a.Title) AS "Кол-во книг", b.Country AS "Страна"; 
+FROM main a, authorinfo b GROUP BY a.auth_surname WHERE a.Author_id = b.Author_id;
+HAVING b.Country = "Америка" 
+
+&& 4 Используем атрибут DISTINCT
+SELECT DISTINCT a.Auth_surname AS "Авторы" FROM main a, Authors b;
+WHERE a.author_id = b.author_id ORDER BY a.Auth_surname
+
+&& 5 Считаем средние значения
+SELECT a.Auth_surname AS "Фамилия",Sum(a.Edition) AS "Тираж";
+FROM main a WHERE a.Edition > (SELECT AVG(b.Edition);
+FROM main b) ORDER BY a.Auth_surname DESC
+
+&& 6 Выведем данные в новую таблицу
+SELECT a.Title, b.Surname, b.Name, c.Country FROM;
+main a, Authors b, Authorinfo c WHERE a.author_id = b.author_id;
+AND b.author_id = c.author_id INTO DBF NewTable ORDER BY c.Country DESC
+CLOSE DATABASES
+SELECT * FROM NewTable
+
+&&Создадим новую таблицу и заполним ее 
+CREATE DBF TestBase( Title C(30), Author C(50),Edition I(4))
+INSERT INTO TestBase (Title, Author, Edition);
+VALUES ("FoxPro","Менахем Базиян",700)
+INSERT INTO TestBase (Title, Author, Edition);
+VALUES ("Пересадочная станция","Клиффорд Саймак",2000)
+INSERT INTO TestBase (Title, Author, Edition);
+VALUES ("Сто лет одиночества","Габриэль Гарсиа Маркес",300)
+INSERT INTO TestBase (Title, Author, Edition);
+VALUES ("Странные существа","Хорхе Луис Борхес",550)
+CLOSE DATABASES
+SELECT * FROM TestBase ORDER BY Author
+

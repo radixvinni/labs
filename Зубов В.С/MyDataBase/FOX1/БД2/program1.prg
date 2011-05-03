@@ -1,0 +1,34 @@
+
+M = "main"
+A = "H:\FOX1\БД2\regesser_info"
+
+C = "video"
+B = "&C->nazvanie"
+
+
+CLEAR
+
+SELECT 1
+USE H:\FOX1\БД2\regeser_info
+INDEX ON regesser_id TO reg
+
+SELECT 2
+USE H:\FOX1\БД2\main
+INDEX ON regesser_id TO M_rege_ind
+
+
+
+SELECT 1
+SET RELATION TO regesser_id INTO video
+SET RELATION TO regesser_id INTO regeser_info ADDITIVE
+
+LIST familiya, Iif(Found(&B),video->nazvanie,"")
+
+BROWSE NOEDIT Nazvanie  "режессеры" PARTITION 45 LEDIT;
+FIELDS familiya:H="Фамилия", Name:H="Имя",;
+otchestvo:H="Отчество",&B:H="Название фильма"
+
+&& Макроподстановки в выражниях
+SET DATE TO BRITISH
+D="Date()+7"
+? Dow(&D)

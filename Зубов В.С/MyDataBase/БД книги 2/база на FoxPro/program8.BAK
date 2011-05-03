@@ -1,0 +1,18 @@
+CLEAR
+SET DEFA TO "D:\база на FoxPro"
+Select 1
+USE writingtable Again ALIAS wtable
+DEFINE WINDOW NEW FROM 1,1 TO 30,80 SYSTEM CLOSE FLOAT GROW MINIMIZE ZOOM
+SHOW WINDOW NEW
+
+&& Пример использования EDIT book_cod:4:R:H="Код книги"
+EDIT Fields name1:40:R:H="Произведение",translat:20:R:H="Перевод";
+For translat="О.Акимова";
+FONT 'Vardana',10 STYLE 'B' PARTITION 40 LEDIT TITLE "Произведения переведенные О.Акимовой" IN NEW
+
+&&Пример использования BROWSE
+BROWSE FIELDS name1:40:R:H="Произведение",translat:20:R:H="Перевод";
+For author_cod=4;
+STYLE 'B' TITLE "Произведения Бредбери" IN NEW
+HIDE WINDOW NEW
+BROWSE

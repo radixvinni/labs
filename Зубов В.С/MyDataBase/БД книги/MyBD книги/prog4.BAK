@@ -1,0 +1,11 @@
+SET DEFA TO D:\Downloads\БДЭС\MyBD
+
+USE main AGAIN ALIAS Books
+SET TEXTMERGE ON TO Report_Books.txt WINDOW SHOW
+INDEX ON Author_id TO B_Auth_ind
+\     Книги Клиффорда Саймака
+\
+SCAN FOR Auth_surname="Саймак"
+\Книга <<RTRIM(Title)>>, издатель <<>> publisher
+ENDSCAN
+SET TEXTMERGE TO 

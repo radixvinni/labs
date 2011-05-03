@@ -1,0 +1,5 @@
+SELECT DISTINCT Main.title, Main.publisher, Main.auth_surname,;
+  Authoraddress.city;
+ FROM  library!main INNER JOIN library!authoraddress ;
+   ON  Main.author_id = Authoraddress.author_id;
+ ORDER BY Main.publisher

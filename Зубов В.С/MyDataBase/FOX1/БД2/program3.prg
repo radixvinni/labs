@@ -1,0 +1,11 @@
+SET DEFA TO H:\FOX1\БД2
+
+USE main AGAIN ALIAS nazvanie
+SET TEXTMERGE ON TO Report_Books.txt WINDOW SHOW
+INDEX ON regesser_id TO B_rege_ind
+\     Фильмы Люка Бессона
+\
+SCAN FOR regesser="Бессон"
+\Книга <<RTRIM(nazvanie)>>, кинокомпания <<cinema>>
+ENDSCAN
+SET TEXTMERGE TO 

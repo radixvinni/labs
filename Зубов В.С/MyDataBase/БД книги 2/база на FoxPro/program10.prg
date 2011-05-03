@@ -1,0 +1,91 @@
+  CLEAR
+  SET DEFA TO "D:\база на FoxPro"
+  && Создание двухуровневого меню
+  && "Горизонтальное меню"
+  DECLARE MAINMENU[3,2]
+  MAINMENU[1,1]="Выборка"
+  MAINMENU[2,1]="Сортировка"
+  MAINMENU[3,1]="В\<ыход"
+  MAINMENU[1,2]="ВЫвод записей удовлетворяющих условию"
+  MAINMENU[2,2]="Сортировать записи по заданному условию"
+  MAINMENU[3,2]="Выход"
+
+  &&"горизонтальное меню"
+  DECLARE MENU1[3],MENU2[2]
+  MENU1[1]="Вывод книг московских издательств"
+  MENU1[2]="Вывод книг не московских издательств"
+  MENU1[3]="Вывод книг изданных с 2000 по 2007 годы"
+  MENU2[1]="Сотритовать по дате издания"
+  MENU2[2]="Сортировать по жанру"
+
+  &&Активация меню
+  MENU BAR MAINMENU,3
+  MENU 1,MENU1,3
+  MENU 2,MENU2,2
+
+  &&ЦИКЛ МЕНЮ
+  DO WHILE .T.
+   READ MENU BAR TO i,j SAVE
+    DO CASE
+         CASE i=1
+               DO CASE
+                      CASE j=1
+                           SELECT maintable.book_name AS "Название",;
+                           maintable.imprintdat AS "Дата",;
+                           imprinttowntable.town AS"Город",;
+                           publishingtable.publishing AS"Издательство";
+                           From maintable,imprinttowntable,publishingtable;
+                           Where  ((maintable.town_cod=imprinttowntable.town_cod);
+                           AND(maintable.publ_cod=publishingtable.publ_cod) ;
+                           AND (imprinttowntable.town="Москва"));
+                           ORDER BY maintable.imprintdat
+                      CASE j=2
+                           SELECT maintable.book_name AS "Название",;
+                           maintable.imprintdat AS "Дата",;
+                           imprinttowntable.town AS"Город",;
+                           publishingtable.publishing AS"Издательство";
+                           From maintable,imprinttowntable,publishingtable;
+                           Where  ((maintable.town_cod=imprinttowntable.town_cod);
+                           AND(maintable.publ_cod=publishingtable.publ_cod) ;
+                           AND NOT(imprinttowntable.town="Москва"));
+                           ORDER BY maintable.imprintdat
+                      CASE j=3
+                           SELECT maintable.book_name AS "Название",;
+                           maintable.imprintdat AS "Дата",;
+                           imprinttowntable.town AS"Город",;
+                           publishingtable.publishing AS"Издательство";
+                           From maintable,imprinttowntable,publishingtable;
+                           Where  ((maintable.town_cod=imprinttowntable.town_cod);
+                           AND(maintable.publ_cod=publishingtable.publ_cod) ;
+                           AND (maintable.imprintdat BETWEEN 2000 AND 2007));
+                           ORDER BY maintable.imprintdat
+
+               ENDCASE
+           CASE i=2
+              DO CASE
+                     CASE j=1
+                           SELECT maintable.book_name AS "Название",;
+                           maintable.imprintdat AS "Дата",;
+                           imprinttowntable.town AS"Город",;
+                           publishingtable.publishing AS"Издательство";
+                           From maintable,imprinttowntable,publishingtable;
+                           Where  ((maintable.town_cod=imprinttowntable.town_cod);
+                           AND(maintable.publ_cod=publishingtable.publ_cod)) ;
+                           ORDER BY maintable.imprintdat ASC
+                     CASE j=2
+                           SELECT genretable.genre AS"Жанр",; 
+                           maintable.book_name AS "Название",;
+                           maintable.imprintdat AS "Дата",;
+                           imprinttowntable.town AS"Город",;
+                           publishingtable.publishing AS"Издательство";
+                           From genretable,maintable,imprinttowntable,publishingtable;
+                           Where  ((maintable.town_cod=imprinttowntable.town_cod);
+                           AND(maintable.publ_cod=publishingtable.publ_cod) ;
+                           AND (maintable.genre_cod=genretable.genre_cod));
+                           ORDER BY genretable.genre
+ 
+              ENDCASE  
+          CASE i=3
+                EXIT          
+   ENDCASE
+  ENDDO

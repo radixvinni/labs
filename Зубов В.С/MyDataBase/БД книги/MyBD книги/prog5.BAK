@@ -1,0 +1,13 @@
+CLEAR
+
+SET DEFA TO D:\Downloads\БДЭС\MyBD
+
+SELECT 1
+USE main AGAIN ALIAS Books
+
+BROWSE NOEDIT TITLE "Бестселлеры";
+FIELDS Title:H="Название",auth_surname:H="Автор",;
+Publisher:H="Издательство",;
+content:H="Примечание" FOR Like("*estseller*",Upper(content))
+
+BROWSE

@@ -1,0 +1,6 @@
+SELECT Firm.firm_name, Izdelie.izdelie, Izdelie.tip;
+ FROM ;
+     data1!firm ;
+    INNER JOIN data1!izdelie ;
+   ON  Firm.izdelie_kl = Izdelie.izdelie_kl;
+ ORDER BY Izdelie.izdelie

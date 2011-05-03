@@ -1,0 +1,47 @@
+&&Сложная индексация
+
+SET DEFA TO D:\Downloads\БДЭС\MyBD
+
+CLEAR
+SELECT 1
+
+WAIT WINDOW 'Индексируем по полям издательствам и годам выпуска'
+USE main AGAIN ALIAS Books
+INDEX ON Publisher+STR(Year) TO compos_indx
+
+BROWSE TITLE "Книги отсортированы по издательствам и годам выпуска"
+
+SET ORDER TO
+
+WAIT WINDOW 'Реалзуем переключение индексов'
+
+INDEX ON Publisher TO Publ_indx
+INDEX ON STR(Year) TO Year_indx
+INDEX ON Title TO Title_indx
+USE main AGAIN alias Books INDEX Publ_indx,Year_indx,Title_indx
+
+WAIT WINDOW 'Сортируем по издательству'
+SET ORDER TO 1
+? "Текущая запись при индексировании по издательству",Recno(),title
+BROWSE TITLE "Книги, проиндексированные по издательству"
+
+SET ORDER TO 2
+? "Текущая запись при индексировании по году издания",Recno(),title
+BROWSE TITLE "Книги, проиндексированные по году издания"
+
+SET ORDER TO 3
+? "Текущая запись при индексировании по названию",Recno(),title
+BROWSE TITLE "Книги, проиндексированные по названию"
+
+WAIT WINDOW 'Выполним быстрый поиск книги с названием "Мастодония"'
+?
+? "Выполним быстрый поиск книги с названием Мастодония"
+key_= "Мастодония"
+SEEK key_
+IF Found()
+	? Title,Auth_surname,Publisher
+	WAIT WINDOW Title+Auth_Surname
+ELSE 
+	? "Такой книги в базе нет!"
+	WAIT WINDOW 'Такой книги в базе нет!'
+ENDIF

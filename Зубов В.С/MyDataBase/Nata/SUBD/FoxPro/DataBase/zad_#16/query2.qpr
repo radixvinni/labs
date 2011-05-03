@@ -1,0 +1,4 @@
+SELECT DISTINCT Table_employee.post, SUM(Table_employee.pay);
+ FROM zad_#16!table_employee, zad_#16!table_children;
+ GROUP BY Table_employee.post;
+ ORDER BY Table_employee.post

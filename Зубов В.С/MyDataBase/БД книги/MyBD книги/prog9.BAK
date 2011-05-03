@@ -1,0 +1,19 @@
+SET DEFA TO D:\Downloads\БДЭС\MyBD
+
+CLEAR
+SELECT 1
+
+USE main AGAIN ALIAS Books
+DEFINE WINDOW New FROM 1,1 TO 30,100 SYSTEM CLOSE FLOAT GROW MINIMIZE ZOOM
+SHOW WINDOW New
+
+&& Пример использования EDIT
+EDIT FIELDS Title:20:R:H="Название",Auth_surname:10:R:H="Автор";
+FOR Auth_surname="Саймак";
+FONT 'Verdana',10 STYLE 'B' PARTITION 40 LEDIT TITLE "Книги Саймака" IN New
+
+&& Пример использования BROWSE
+BROWSE FIELDS Title:20:R:H="Название",Year:10:R:H="Год",;
+Auth_surname:10:R:H="Автор" FOR Year=2001;
+STYLE 'B' TITLE "Книги 2001 года" IN New
+

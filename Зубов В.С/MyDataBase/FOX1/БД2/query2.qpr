@@ -1,0 +1,4 @@
+SELECT DISTINCT Video.nazvanie, Video.country, Regeser_info.familiya;
+ FROM  data!regeser_info INNER JOIN data!video ;
+   ON  Regeser_info.regesser_id = Video.regesser_id;
+ ORDER BY Video.country

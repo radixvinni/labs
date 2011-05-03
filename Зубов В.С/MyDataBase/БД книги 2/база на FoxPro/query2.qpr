@@ -1,0 +1,6 @@
+SELECT DISTINCT Maintable.book_name, Maintable.imprintdat,;
+  Genretable.genre;
+ FROM bookdata!imprinttowntable, bookdata!publishingtable,;
+   bookdata!maintable FULL JOIN bookdata!genretable ;
+   ON  Maintable.genre_cod = Genretable.genre_cod;
+ ORDER BY Genretable.genre

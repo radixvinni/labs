@@ -1,0 +1,13 @@
+CLEAR
+
+SET DEFA TO H:\FOX1\БД1
+
+SELECT 1
+USE main AGAIN ALIAS toys
+
+BROWSE NOEDIT TITLE "Кукла";
+FIELDS izdelie :H="Изделие",firm:H="фирма",;
+tip :H="тип",;
+opisanie:H="Описание" FOR Like("*укла*",opisanie)
+
+BROWSE

@@ -1,0 +1,6 @@
+SELECT DISTINCT Table_employee.family_name;
+ FROM  zad_#18!table_children INNER JOIN zad_#18!table_employee ;
+   ON  Table_children.parent_ = Table_employee.parent_;
+ GROUP BY Table_employee.parent_;
+ HAVING CNT(Table_children.child_name)=>2=.T.;
+ ORDER BY Table_employee.family_name

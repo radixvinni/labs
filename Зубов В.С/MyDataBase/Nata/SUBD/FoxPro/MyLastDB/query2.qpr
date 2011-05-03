@@ -1,0 +1,3 @@
+SELECT Main.firm, count(*);
+ FROM data1!main;
+ GROUP BY Main.firm

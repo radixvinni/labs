@@ -1,0 +1,5 @@
+SELECT Main.firm, Table4.country, count(*);
+ FROM  data1!main INNER JOIN data1!table4 ;
+   ON  Main.firm = Table4.firm;
+ GROUP BY Table4.country;
+ ORDER BY 3
