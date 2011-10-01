@@ -1,0 +1,84 @@
+%% \DeclareSymbolFont{roperators}      {T2A}{\rmdefault} {m}{n}
+%% \SetSymbolFont    {roperators}{bold}{T2A}{\rmdefault} {b}{n}
+
+\DeclareSymbolFont{rletters}        {T2A}{\rmdefault}{m}{it}
+\SetSymbolFont    {rletters}{bold}  {T2A}{\rmdefault}{b}{it}
+
+\expandafter\def\csname T2A-cmd\endcsname#1{%
+    \ifx\protect\@typeset@protect\else\noexpand#1\expandafter\@gobble\fi%
+    }
+\DeclareMathSymbol{^^c0}{\mathalpha}{rletters}{"C0} %% À
+\DeclareMathSymbol{^^c1}{\mathalpha}{rletters}{"C1} %% Á
+\DeclareMathSymbol{^^c2}{\mathalpha}{rletters}{"C2} %% Â
+\DeclareMathSymbol{^^c3}{\mathalpha}{rletters}{"C3} %% Ã
+\DeclareMathSymbol{^^c4}{\mathalpha}{rletters}{"C4} %% Ä
+\DeclareMathSymbol{^^c5}{\mathalpha}{rletters}{"C5} %% Å
+\DeclareMathSymbol{^^c6}{\mathalpha}{rletters}{"C6} %% Æ
+\DeclareMathSymbol{^^c7}{\mathalpha}{rletters}{"C7} %% Ç
+\DeclareMathSymbol{^^c8}{\mathalpha}{rletters}{"C8} %% È
+\DeclareMathSymbol{^^c9}{\mathalpha}{rletters}{"C9} %% É
+\DeclareMathSymbol{^^ca}{\mathalpha}{rletters}{"CA} %% Ê
+\DeclareMathSymbol{^^cb}{\mathalpha}{rletters}{"CB} %% Ë
+\DeclareMathSymbol{^^cc}{\mathalpha}{rletters}{"CC} %% Ì
+\DeclareMathSymbol{^^cd}{\mathalpha}{rletters}{"CD} %% Í
+\DeclareMathSymbol{^^ce}{\mathalpha}{rletters}{"CE} %% Î
+\DeclareMathSymbol{^^cf}{\mathalpha}{rletters}{"CF} %% Ï
+\DeclareMathSymbol{^^d0}{\mathalpha}{rletters}{"D0} %% Ð
+\DeclareMathSymbol{^^d1}{\mathalpha}{rletters}{"D1} %% Ñ
+\DeclareMathSymbol{^^d2}{\mathalpha}{rletters}{"D2} %% Ò
+\DeclareMathSymbol{^^d3}{\mathalpha}{rletters}{"D3} %% Ó
+\DeclareMathSymbol{^^d4}{\mathalpha}{rletters}{"D4} %% Ô
+\DeclareMathSymbol{^^d5}{\mathalpha}{rletters}{"D5} %% Õ
+\DeclareMathSymbol{^^d6}{\mathalpha}{rletters}{"D6} %% Ö
+\DeclareMathSymbol{^^d7}{\mathalpha}{rletters}{"D7} %% ×
+\DeclareMathSymbol{^^d8}{\mathalpha}{rletters}{"D8} %% Ø
+\DeclareMathSymbol{^^d9}{\mathalpha}{rletters}{"D9} %% Ù
+\DeclareMathSymbol{^^da}{\mathalpha}{rletters}{"DA} %% Ú
+\DeclareMathSymbol{^^db}{\mathalpha}{rletters}{"DB} %% Û
+\DeclareMathSymbol{^^dc}{\mathalpha}{rletters}{"DC} %% Ü
+\DeclareMathSymbol{^^dd}{\mathalpha}{rletters}{"DD} %% Ý
+\DeclareMathSymbol{^^de}{\mathalpha}{rletters}{"DE} %% Þ
+\DeclareMathSymbol{^^df}{\mathalpha}{rletters}{"DF} %% ß
+
+\DeclareMathSymbol{^^e0}{\mathalpha}{rletters}{"E0} %% à
+\DeclareMathSymbol{^^e1}{\mathalpha}{rletters}{"E1} %% á
+\DeclareMathSymbol{^^e2}{\mathalpha}{rletters}{"E2} %% â
+\DeclareMathSymbol{^^e3}{\mathalpha}{rletters}{"E3} %% ã
+\DeclareMathSymbol{^^e4}{\mathalpha}{rletters}{"E4} %% ä
+\DeclareMathSymbol{^^e5}{\mathalpha}{rletters}{"E5} %% å
+\DeclareMathSymbol{^^e6}{\mathalpha}{rletters}{"E6} %% æ
+\DeclareMathSymbol{^^e7}{\mathalpha}{rletters}{"E7} %% ç
+\DeclareMathSymbol{^^e8}{\mathalpha}{rletters}{"E8} %% è
+\DeclareMathSymbol{^^e9}{\mathalpha}{rletters}{"E9} %% é
+\DeclareMathSymbol{^^ea}{\mathalpha}{rletters}{"EA} %% ê
+\DeclareMathSymbol{^^eb}{\mathalpha}{rletters}{"EB} %% ë
+\DeclareMathSymbol{^^ec}{\mathalpha}{rletters}{"EC} %% ì
+\DeclareMathSymbol{^^ed}{\mathalpha}{rletters}{"ED} %% í
+\DeclareMathSymbol{^^ee}{\mathalpha}{rletters}{"EE} %% î
+\DeclareMathSymbol{^^ef}{\mathalpha}{rletters}{"EF} %% ï
+\DeclareMathSymbol{^^f0}{\mathalpha}{rletters}{"F0} %% ð
+\DeclareMathSymbol{^^f1}{\mathalpha}{rletters}{"F1} %% ñ
+\DeclareMathSymbol{^^f2}{\mathalpha}{rletters}{"F2} %% ò
+\DeclareMathSymbol{^^f3}{\mathalpha}{rletters}{"F3} %% ó
+\DeclareMathSymbol{^^f4}{\mathalpha}{rletters}{"F4} %% ô
+\DeclareMathSymbol{^^f5}{\mathalpha}{rletters}{"F5} %% õ
+\DeclareMathSymbol{^^f6}{\mathalpha}{rletters}{"F6} %% ö
+\DeclareMathSymbol{^^f7}{\mathalpha}{rletters}{"F7} %% ÷
+\DeclareMathSymbol{^^f8}{\mathalpha}{rletters}{"F8} %% ø
+\DeclareMathSymbol{^^f9}{\mathalpha}{rletters}{"F9} %% ù
+\DeclareMathSymbol{^^fa}{\mathalpha}{rletters}{"FA} %% ú
+\DeclareMathSymbol{^^fb}{\mathalpha}{rletters}{"FB} %% û
+\DeclareMathSymbol{^^fc}{\mathalpha}{rletters}{"FC} %% ü
+\DeclareMathSymbol{^^fd}{\mathalpha}{rletters}{"FD} %% ý
+\DeclareMathSymbol{^^fe}{\mathalpha}{rletters}{"FE} %% þ
+\DeclareMathSymbol{^^ff}{\mathalpha}{rletters}{"FF} %% ÿ
+
+\DeclareMathSymbol{^^9c}{\mathalpha}{rletters}{"9C} %% ¨
+\DeclareMathSymbol{^^bc}{\mathalpha}{rletters}{"BC} %% ¸
+
+\SetMathAlphabet{\mathrm}{normal}{T2A}{\rmdefault}{m}{n}
+\SetMathAlphabet{\mathrm}{bold}  {T2A}{\rmdefault}{b}{n}
+\SetMathAlphabet{\mathit}{normal}{T2A}{\rmdefault}{m}{it}
+\SetMathAlphabet{\mathit}{bold}  {T2A}{\rmdefault}{b}{it}
+\SetMathAlphabet{\mathbf}{normal}{T2A}{\rmdefault}{b}{n}
+\SetMathAlphabet{\mathbf}{bold}  {T2A}{\rmdefault}{b}{n}

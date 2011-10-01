@@ -1,0 +1,2 @@
+Для установки нужно скопировать папку DMVNmpei в директорию C:\Program Files (x86)\MiKTeX 2.8\tex\generic\
+Потом запустить Пуск -> MiKTeX 2.x -> Maintanance(Admin) -> MikTeX Setings(Admin) и выполнить Refresh FNDB а потом Update Formats

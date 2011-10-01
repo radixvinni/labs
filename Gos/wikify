@@ -1,0 +1,166 @@
+#!/usr/bin/perl
+  ########################################
+  #
+  # Transforms file in LaTeX (http://www.tug.org/) notation 
+  # to file in Wikimedia notation (http://wikimedia.org)
+  #
+  #########################################
+  #
+  use strict;
+  local $/='\n';
+  my $t;
+  my %formules = ();
+  my $formula_count = 0;
+  my $task_count = 0;
+  #
+  $t = join ( "", <STDIN>);
+  print do_the_job( $t );
+ 
+  #########################################
+  # \\hr\{([^{}]*(\{[^{}]*\})?[^{}]*(\{[^{}]*(\{[^{}]*\})?[^{}]*\})?[^{}]*(\{[^{}]*\})?[^{}]*)\}
+  sub usage {
+        print <<END_USAGE
+  Transforms file in TeX (http://www.tug.org/) notation 
+  to file in Wikimedia notation (http://wikimedia.org)
+     Usage:
+                ./wikify < input_file > output_file
+END_USAGE
+  }
+  my $nop = "";
+  sub do_the_job {
+        my $T = shift;
+        my $nobraces = '[^{}]*';
+        my $br1 = "$nobraces(\{$nobraces\})?$nobraces";
+        my $br2 = "$br1(\{$br1\})?$br1";
+        my $br3 = "$br2(\{$br2\})?$br2";
+        my $br4 = "$br3(\{$br3\})?$br3";
+        #
+        $T =~ s/---/-/g; 
+        $T =~ s/--/-/g;
+        $T =~ s/~/\&nbsp;/g;
+        $T =~ s/(\\sloppy|\\noindent|\\\w+penalty=?\d+|\\end\{document\}|\\begin\{document\})//g;
+        #
+        $T =~ s/\$\s*\to\s*\$/\&rarr;/;
+        $T =~ s/\$(\d+)\$/$1/;
+        #
+        $T =~ s/\$\$([^\$]+)\$\$/"\n\n:".&do_formula($1)."\n\n"/ge;
+        $T =~ s/\\\[([^\$]+)\\\\]/"\n\n:".&do_formula($1)."\n\n"/ge;
+        $T =~ s/\\begin\{equation\}([^\$]+)\\end\{equation\}/"\n" . &do_formula($1) . "\n"/ge;
+        $T =~ s/\$\s*([^\$]+)\$/&do_formula($1)/ge;
+        #
+        $T =~ s/</&lt;/g;
+        $T =~ s/>/&gt;/g;
+        $T =~ s/\&lt;i\&gt;/<i>/g;
+        $T =~ s/\&lt;\/i\&gt;/<\/i>/g;
+        $T =~ s/\&lt;b\&gt;/<b>/g;
+        $T =~ s/\&lt;\/b\&gt;/<\/b>/g;
+        $T =~ s/\&lt;math\&gt;/<math>/g;
+        $T =~ s/\&lt;\/math\&gt;/<\/math>/g;
+        #
+        $T =~ s/%([^\n]*)\n/<!--$1-->/g;
+        $T =~ s/\\\%/\%/g;
+        #
+        $T =~ s/([^\\])?\\\{/${1}xxxOBRACE/g;
+        $T =~ s/([^\\])?\\\}/${1}xxxCBRACE/g;
+        #
+        $T =~ s/(\{\\bf\s*|\\textbf\{)($br4)\}/'''$2'''/g;
+        $T =~ s/(\{\\(it|em|sc)\s*|\\textit\{)($br4)\}/''$3''/g;
+        $T =~ s/(\{\\tt\*|\\texttt\{)($br4)\}/<tt>$2<\/tt>/g;
+        #
+        #$T =~ s/\\hr{($br1)\}/($1)/g;
+        #$T =~ s/\\hr{($br2)\}/($1)/g;
+        #$T =~ s/\\hr{($br3)\}/($1)/g;
+        #$T =~ s/\\hr{($br4)\}/($1)/g;
+        #  
+        $T =~ s/\\section{\s*($br4)\s*\}\s*\n?/<!--$1-->\n/g;
+        $T =~ s/\\subsection{\s*($br4)\s*\}\s*\n?/==$1==\n/g;
+        $T =~ s/\\subsubsection{\s*($br4)\s*\}\s*\n?/===$1===\n/g;
+        #
+        $T =~ s/\\ldots/\&hellip;/g; 
+        $T =~ s/\\\\s*\n;/<br\/>/g;
+        #
+        $T =~ s/\\begin\{center\}/\n\n<div align="center">/g;
+        $T =~ s/\\end\{center\}/<\/div>\n\n/g;
+        #
+        $T =~ s/\\begin\{task\}((.|\n)+?)\\end\{task\}/&do_task($1)/ge;
+        $T =~ s/\\begin\{itemize\}((.|\n)+?)\\end\{itemize\}/&do_ilist($1)/ge;
+        $T =~ s/\\begin\{proof\}\s*((.|\n)+?)\\end\{proof\}/"{{Доказательство|".$1."}}"/ge;
+        $T =~ s/\\begin\{theorem\}\[(.*)\]\s*((.|\n)+?)\\end\{theorem\}/"{{МатТеорема|" . $2 . "|" . $1 . "}}"/ge;
+        $T =~ s/\\begin\{theorem\}\s*((.|\n)+?)\\end\{theorem\}/"{{МатТеорема|" . $1 . "}}"/ge;
+        $T =~ s/\\begin\{df\}\[(.*)\]\s*((.|\n)+?)\\end\{df\}/"{{Определение|" . $2 . "|" . $1 . "}}"/ge;
+        $T =~ s/\\begin\{df\}\s*((.|\n)+?)\\end\{df\}/"{{Определение|" . $1 . "}}"/ge;
+        $T =~ s/\\begin\{stm\}\[(.*)\]\s*((.|\n)+?)\\end\{stm\}/"{{Утверждение|" . $2 . "|" . $1 . "}}"/ge;
+        $T =~ s/\\begin\{stm\}\s*((.|\n)+?)\\end\{stm\}/"{{Утверждение|" . $1 . "}}"/ge;
+        $T =~ s/\\begin\{imp\}\[(.*)\]\s*((.|\n)+?)\\end\{imp\}/"{{Следствие|" . $2 . "|" . $1 . "}}"/ge;
+        $T =~ s/\\begin\{imp\}\s*((.|\n)+?)\\end\{imp\}/"{{Следствие|" . $1 . "}}"/ge;
+        $T =~ s/\\begin\{lemma\}\[(.*)\]\s*((.|\n)+?)\\end\{imp\}/"{{Лемма|" . $2 . "|" . $1 . "}}"/ge;
+        $T =~ s/\\begin\{lemma\}\s*((.|\n)+?)\\end\{imp\}/"{{Лемма|" . $1 . "}}"/ge;
+        $T =~ s/\\begin\{note\}\[(.*)\]\s*((.|\n)+?)\\end\{note\}/"{{Замечание|" . $2 . "|" . $1 . "}}"/ge;
+        $T =~ s/\\begin\{note\}\s*((.|\n)+?)\\end\{note\}/"{{Замечание|" . $1 . "}}"/ge;
+        #
+        $T =~ s/\\begin\{enumerate\}((.|\n)+?)\\end\{enumerate\}/&do_olist($1)/ge;
+        $T =~ s/xxxOBRACE/\{/g;
+        $T =~ s/xxxCBRACE/\}/g;
+        #
+        $T =~ s/\\label\{([^\}]*)\}/<b>($1)<\/b>/g;
+        $T =~ s/\\r[e]f\{([^\}]*)\}/<b>($1)<\/b>/g;
+        #
+        $T =~ s/\n\s*\n\s*\n+/\n\n/g;
+        $T =~ s/\\footnote\{($br4)\}/&do_note($1)/ge;
+        $T .= &flush_notes();
+        #
+        foreach my $k (keys %formules) {
+                $T =~ s/$k/$formules{$k}/;
+        }
+        return $T;
+  }
+  #
+  my @notes = ();
+  my $note_count = 0;
+  #
+  sub do_formula {
+        my $f = shift;
+        my $label;
+        $formula_count++;
+        my $formula_name = "__FORMULA${formula_count}__";
+ 
+        if($f =~ s/\\label\{([^\}]*)\}//) {
+                $label = $1;
+                $formules{$formula_name} = "<math>$f</math>  <b>($label)</b>";
+        } else {
+                $formules{$formula_name} = "<math>$f</math>";
+        }
+        return $formula_name;
+  }
+  sub do_note {
+        $_ = shift;
+        $note_count++; 
+        $_ =~ s/\n/ /g;
+        my $id = "note$note_count";
+        push @notes, "# {{note|$id}} $_";
+        return "{{ref|$id}}";
+  }
+  sub do_ilist {
+        $_ = shift;
+        $_ =~ s/\*/:*/g;
+        $_ =~ s/\#/:\#/g;
+        $_ =~ s/\s*\\item\s*/\n* /g;
+        return $_;
+  }
+  sub do_olist {
+        $_ = shift;
+        $_ =~ s/\*/:*/g;
+        $_ =~ s/\#/:\#/g;
+        $_ =~ s/\s*\\item\s*/\n\# /g;
+        return $_;
+  }
+  sub do_task {
+        $_ = shift;
+        $task_count++;
+        return "\n\n<div class=\"task\"><b>Р—Р°РґР°С‡Р° $task_count.</b>\n\n $_\n\n<b>РљРѕРЅРµС† Р·Р°РґР°С‡Рё.</b></div>\n\n";
+  }
+  sub flush_notes {
+        my $res =  join("\n", @notes);
+        @notes = ();
+        return $res;
+  }

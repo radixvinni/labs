@@ -1,0 +1,20 @@
+\ProvidesPackage{dmvnbaseex}[2011/05/28 v1.36 DMVN BaseEx LaTeX Package]
+\RequirePackage{dmvnbase}
+
+% ===============================================================
+% Small matrices
+% ===============================================================
+\newcommand{\mats}[1]{{\renewcommand{\arraystretch}{0.7} \addtolength{\tabcolsep}{-10pt} \small \begin{matrix}#1\end{matrix}}}                            %   a
+\newcommand{\rbmats}[1]{\hr{\mats{#1}}}                                                   %  (a)
+\newcommand{\sbmats}[1]{\hs{\mats{#1}}}                                                   %  [a]
+\newcommand{\cbmats}[1]{\hc{\mats{#1}}}                                                   %  {a}
+\newcommand{\mbmats}[1]{\hm{\mats{#1}}}                                                   %  |a|
+\newcommand{\nbmats}[1]{\hn{\mats{#1}}}                                                   % ||a||
+\newcommand{\rcmats}[1]{\left.\mats{#1}\right\}}                                          %   a}
+\newcommand{\lcmats}[1]{\left\{\mats{#1}\right.}                                          %  {a
+
+
+\newcommand{\bcasesmall}[1]{{\renewcommand{\baselinestretch}{0.7} \small \bcase{#1} }}                  
+\newcommand{\casesmall}[1]{{\renewcommand{\baselinestretch}{0.7} \small \case{#1} }}
+
+
