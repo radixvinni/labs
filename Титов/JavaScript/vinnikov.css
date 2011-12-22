@@ -1,0 +1,23 @@
+body{
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+    color: #333366;
+}
+#number{
+float:left;
+width:5%;
+}
+#task{
+float:left;
+width:80%;
+}
+#button{
+float:left;
+width:5%;
+padding:10px;
+}
+#content{
+clear:both;
+margin-top:10px;
+padding:5px;
+font-size: 75%;
+}

@@ -1,0 +1,840 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+     "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Задание по Интернет Технологиям</title>
+<link rel="stylesheet" type="text/css" href="vinnikov.css" />
+<script type="text/javascript" src="vinnikov.js"></script>
+</head>
+
+<body>
+<div id="number">11.</div>
+<div id="task">Дан документ в формате HTML. Разработать скрипт на языке JavaScript выполняющий 
+указанное в задании преобразование документа. Скрипт располагается в изменяемом 
+документе и должен выполняться при нажатии на кнопку, помещенную в начало документа.
+<br/>
+Выделить первый, последний, четные и нечетные столбцы каждой таблицы документа
+различным фоном. В первом столбце добавить в начало содержимого ячеек номера строк.</div>
+<div id="button"><input type="button" value="Поехали" id="button_go"></input>
+<input type="button" value="Вернуть" id="button_reload"></input></div>
+<div id="content">
+<!--- Тут далее не мой код --->
+<TABLE border="1" cellpadding="5" cellspacing="2"
+  summary="History courses offered in the community of
+           Bath arranged by course name, tutor, summary, 
+           code, and fee">
+  <TR>
+    <TH colspan="5" scope="colgroup">Community Courses -- Bath Autumn 1997</TH>
+  </TR>
+  <TR>
+    <TH scope="col" abbr="Name">Course Name</TH>
+    <TH scope="col" abbr="Tutor">Course Tutor</TH>
+    <TH scope="col">Summary</TH>
+    <TH scope="col">Code</TH>
+    <TH scope="col">Fee</TH>
+  </TR>
+  <TR>
+    <TD scope="row">After the Civil War</TD>
+    <TD>Dr. John Wroughton</TD>
+    <TD>
+       The course will examine the turbulent years in England
+       after 1646. <EM>6 weekly meetings starting Monday 13th
+      October.</EM>
+    </TD>
+    <TD>H27</TD>
+    <TD>&pound;32</TD>
+  </TR>
+  <TR>
+    <TD scope="row">An Introduction to Anglo-Saxon England</TD>
+    <TD>Mark Cottle</TD>
+    <TD>
+       One day course introducing the early medieval
+       period reconstruction the Anglo-Saxons and
+       their society. <EM>Saturday 18th October.</EM>
+    </TD>
+    <TD>H28</TD>
+    <TD>&pound;18</TD>
+  </TR>
+  <TR>
+    <TD scope="row">The Glory that was Greece</TD>
+    <TD>Valerie Lorenz</TD>
+    <TD>
+     Birthplace of democracy, philosophy, heartland of theater, home of
+     argument. The Romans may have done it but the Greeks did it
+     first. <EM>Saturday day school 25th October 1997</EM>
+    </TD>
+    <TD>H30</TD>
+    <TD>&pound;18</TD>
+  </TR>
+</TABLE>
+
+<h1>Расписание весеннего семестра 2010/11 уч.год группы А-14-07</h1>
+<table border="1" cellpadding="1" cellspacing="0"   ><tr>
+<td  rowspan="2">&nbsp;</td>
+<td  colspan="2" align="center">
+<div >Понедельник</div>
+</td>
+<td  colspan="2" align="center">
+<div >Вторник</div>
+</td>
+
+<td  colspan="2" align="center">
+<div >Среда</div>
+</td>
+<td  colspan="2" align="center">
+<div >Четверг</div>
+</td>
+<td  colspan="2" align="center">
+<div >Пятница</div>
+</td>
+<td  colspan="2" align="center">
+<div >Суббота</div>
+</td>
+<td  rowspan="2">&nbsp;</td>
+
+</tr>
+<tr>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>1 пара</nobr><div >09:20</div>
+<div >10:55</div>
+</div>
+
+</td><td >&nbsp;</td>
+<td ><div ><span >Теория игр и исследование операций</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710А</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10004627" title="Заславский Алексей Александрович">Заславский&nbsp;А.А.</a></nobr></div>
+<div></div>
+</div>
+</td><td ><div ><span >Интернет-технолог.</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-711</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10005045" title="Титов Дмитрий Анатольевич">Титов&nbsp;Д.А.</a></nobr></div>
+<div></div>
+</div>
+
+</td>
+<td >&nbsp;</td><td  colspan="2"><div ><span >НИР</span>, <span >Каф.: Математического моделирования</span><div></div>
+</div>
+</td><td ><div ><span >Мат. модели в естеств. и экологии</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710А</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=250050010807" title="Кирсанов Михаил Николаевич">Кирсанов&nbsp;М.Н.</a></nobr></div>
+<div></div>
+</div>
+</td>
+<td >&nbsp;</td>
+<td  colspan="2" rowspan="5"><div ><span ></span> (<span >День самостоятельных занятий</span>)<div></div>
+
+</div>
+</td><td  colspan="2">&nbsp;</td>
+<td  valign="top" align="center">
+<div ><nobr>1 пара</nobr><div >09:20</div>
+<div >10:55</div>
+</div>
+</td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>2 пара</nobr><div >11:10</div>
+<div >12:45</div>
+
+</div>
+</td><td  colspan="2"><div ><span >Теория игр и исследование операций</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710А</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10004627" title="Заславский Алексей Александрович">Заславский&nbsp;А.А.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Интернет-технолог.</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710А</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10005045" title="Титов Дмитрий Анатольевич">Титов&nbsp;Д.А.</a></nobr></div>
+<div></div>
+</div>
+
+</td><td  colspan="2">&nbsp;</td><td  colspan="2"><div ><span >Мат. модели в естеств. и экологии</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710А</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=250050010807" title="Кирсанов Михаил Николаевич">Кирсанов&nbsp;М.Н.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2">&nbsp;</td>
+<td  valign="top" align="center">
+<div ><nobr>2 пара</nobr><div >11:10</div>
+<div >12:45</div>
+</div>
+</td>
+
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>обед</nobr><div >12:45</div>
+<div >13:45</div>
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+
+</div>
+</td>
+<td  valign="top" align="center">
+<div ><nobr>обед</nobr><div >12:45</div>
+<div >13:45</div>
+</div>
+</td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>3 пара</nobr><div >13:45</div>
+<div >15:20</div>
+
+</div>
+</td><td  colspan="2"><div ><span >Математические основы криптографии</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710А</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000401" title="Фролов Александр Борисович">Фролов&nbsp;А.Б.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Сетевые технологии</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710А</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000390" title="Князев Анатолий Васильевич">Князев&nbsp;А.В.</a></nobr></div>
+<div></div>
+</div>
+
+</td><td  colspan="2">&nbsp;</td><td  colspan="2"><div ><span >Случайные процессы и ТМО</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710А</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10003453" title="Горицкий Юрий Александрович">Горицкий&nbsp;Ю.А.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2">&nbsp;</td>
+<td  valign="top" align="center">
+<div ><nobr>3 пара</nobr><div >13:45</div>
+<div >15:20</div>
+</div>
+</td>
+
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>4 пара</nobr><div >15:35</div>
+<div >17:10</div>
+</div>
+</td><td ><div ><span >Математические основы криптографии</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-711</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000401" title="Фролов Александр Борисович">Фролов&nbsp;А.Б.</a></nobr></div>
+<div></div>
+</div>
+
+</td>
+<td ><div ><span >Экономика</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u0412" 
+			>В-308</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=4500050027575" title="Боснякова Дарья Юрьевна">Боснякова&nbsp;Д.Ю.</a></nobr></div>
+<div></div>
+</div>
+</td><td ><div ><span >Экономика</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-815</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=2300050012687" title="Амелина Анна Юрьевна">Амелина&nbsp;А.Ю.</a></nobr></div>
+<div></div>
+</div>
+
+</td>
+<td ><div ><span >Сетевые технологии</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-711</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000390" title="Князев Анатолий Васильевич">Князев&nbsp;А.В.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2">&nbsp;</td><td >&nbsp;</td>
+<td ><div ><span >Случайные процессы и ТМО</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710А</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10003453" title="Горицкий Юрий Александрович">Горицкий&nbsp;Ю.А.</a></nobr></div>
+<div></div>
+
+</div>
+</td><td  colspan="2">&nbsp;</td>
+<td  valign="top" align="center">
+<div ><nobr>4 пара</nobr><div >15:35</div>
+<div >17:10</div>
+</div>
+</td>
+</tr>
+</table>
+<!-------------------------------->
+
+<h1>Расписание весеннего семестра 2010/11 уч.год группы А-13-07</h1>
+		
+		<table border="1" cellpadding="1" cellspacing="0"   ><tr>
+<td  rowspan="2">&nbsp;</td>
+<td  colspan="2" align="center">
+<div >Понедельник</div>
+</td>
+<td  colspan="2" align="center">
+<div >Вторник</div>
+</td>
+
+<td  colspan="2" align="center">
+<div >Среда</div>
+</td>
+<td  colspan="2" align="center">
+<div >Четверг</div>
+</td>
+<td  colspan="2" align="center">
+<div >Пятница</div>
+</td>
+<td  colspan="2" align="center">
+<div >Суббота</div>
+</td>
+<td  rowspan="2">&nbsp;</td>
+
+</tr>
+<tr>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>1 пара</nobr><div >09:20</div>
+<div >10:55</div>
+</div>
+
+</td><td  colspan="2"><div ><span >ОС</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-807</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000391" title="Калитин Сергей Серафимович">Калитин&nbsp;С.С.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2">&nbsp;</td>
+<td  colspan="2" rowspan="5"><div ><span ></span> (<span >День самостоятельных занятий</span>)<div></div>
+</div>
+</td><td  colspan="2">&nbsp;</td><td  colspan="2">&nbsp;</td><td  colspan="2">&nbsp;</td>
+<td  valign="top" align="center">
+
+<div ><nobr>1 пара</nobr><div >09:20</div>
+<div >10:55</div>
+</div>
+</td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>2 пара</nobr><div >11:10</div>
+<div >12:45</div>
+</div>
+</td><td  colspan="2"><div ><span >ОС</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-708</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000391" title="Калитин Сергей Серафимович">Калитин&nbsp;С.С.</a></nobr></div>
+
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >ВМСС</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-809</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000399" title="Чернов Петр Леонидович">Чернов&nbsp;П.Л.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2">&nbsp;</td><td  colspan="2">&nbsp;</td><td  colspan="2">&nbsp;</td>
+<td  valign="top" align="center">
+<div ><nobr>2 пара</nobr><div >11:10</div>
+<div >12:45</div>
+
+</div>
+</td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>обед</nobr><div >12:45</div>
+<div >13:45</div>
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+</td>
+<td  valign="top" align="center">
+<div ><nobr>обед</nobr><div >12:45</div>
+<div >13:45</div>
+</div>
+</td>
+</tr>
+
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>3 пара</nobr><div >13:45</div>
+<div >15:20</div>
+</div>
+</td><td  colspan="2"><div ><span >Теория вероятностей и математическая статистика</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-508</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000362" title="Абросимов Леонид Иванович">Абросимов&nbsp;Л.И.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >ВМСС</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-708</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000399" title="Чернов Петр Леонидович">Чернов&nbsp;П.Л.</a></nobr></div>
+
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Теория игр и исследование операций</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-815</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000382" title="Еремеев Александр Павлович">Еремеев&nbsp;А.П.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Мат. модели в естеств. и экологии</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-816</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10004597" title="Тарасов Валерий Борисович">Тарасов&nbsp;В.Б.</a></nobr></div>
+<div></div>
+
+</div>
+</td><td  colspan="2">&nbsp;</td>
+<td  valign="top" align="center">
+<div ><nobr>3 пара</nobr><div >13:45</div>
+<div >15:20</div>
+</div>
+</td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>4 пара</nobr><div >15:35</div>
+<div >17:10</div>
+
+</div>
+</td><td ><div ><span >Теория вероятностей и математическая статистика</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-508</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000362" title="Абросимов Леонид Иванович">Абросимов&nbsp;Л.И.</a></nobr></div>
+<div></div>
+</div>
+</td>
+<td ><div ><span >Экономика</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u0412" 
+			>В-308</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=4500050027575" title="Боснякова Дарья Юрьевна">Боснякова&nbsp;Д.Ю.</a></nobr></div>
+<div></div>
+
+</div>
+</td><td ><div ><span >Экономика</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-815</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=2300050012687" title="Амелина Анна Юрьевна">Амелина&nbsp;А.Ю.</a></nobr></div>
+<div></div>
+</div>
+</td>
+<td ><div ><span >Теория игр и исследование операций</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-815</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000382" title="Еремеев Александр Павлович">Еремеев&nbsp;А.П.</a></nobr></div>
+<div></div>
+
+</div>
+</td><td ><div ><span >Теория игр и исследование операций</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-815</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000382" title="Еремеев Александр Павлович">Еремеев&nbsp;А.П.</a></nobr></div>
+<div></div>
+</div>
+</td>
+<td ><div ><span >Теория игр и исследование операций</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-706</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10005740" title="Гречкина Полина Викторовна">Гречкина&nbsp;П.В.</a></nobr></div>
+<div></div>
+
+</div>
+</td><td ><div ><span >Мат. модели в естеств. и экологии</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-816</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10004597" title="Тарасов Валерий Борисович">Тарасов&nbsp;В.Б.</a></nobr></div>
+<div></div>
+</div>
+</td>
+<td ><div ><span >КП по ОС</span> (<span >Консультация</span>), <span >Каф.: Прикладной математики</span><div></div>
+
+</div>
+</td><td  colspan="2">&nbsp;</td>
+<td  valign="top" align="center">
+<div ><nobr>4 пара</nobr><div >15:35</div>
+<div >17:10</div>
+</div>
+</td>
+</tr>
+</table>
+
+
+<h1>Расписание весеннего семестра 2010/11 уч.год группы А-14-08</h1>
+		
+		<table border="1" cellpadding="1" cellspacing="0"   ><tr>
+<td  rowspan="2">&nbsp;</td>
+<td  colspan="2" align="center">
+<div >Понедельник</div>
+</td>
+<td  colspan="2" align="center">
+<div >Вторник</div>
+</td>
+
+<td  colspan="2" align="center">
+<div >Среда</div>
+</td>
+<td  colspan="2" align="center">
+<div >Четверг</div>
+</td>
+<td  colspan="2" align="center">
+<div >Пятница</div>
+</td>
+<td  rowspan="2">&nbsp;</td>
+</tr>
+<tr>
+<td  align="center"><div >I</div></td>
+
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>1 пара</nobr><div >09:20</div>
+<div >10:55</div>
+</div>
+</td>
+<td  colspan="2" rowspan="5"><div ><span ></span> (<span >День самостоятельных занятий</span>)<div></div>
+</div>
+</td><td  colspan="2">&nbsp;</td><td ><div ><span >Правоведение</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041D" 
+			>Н-202</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10004922" title="Власенко Ольга Борисовна">Власенко&nbsp;О.Б.</a></nobr></div>
+
+<div></div>
+</div>
+</td>
+<td ><div ><span >Правоведение</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-808</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10004922" title="Власенко Ольга Борисовна">Власенко&nbsp;О.Б.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >БД и ЭС</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-711</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000438" title="Зубов Валерий Сергеевич">Зубов&nbsp;В.С.</a></nobr></div>
+
+<div></div>
+</div>
+</td><td  colspan="2">&nbsp;</td>
+<td  valign="top" align="center">
+<div ><nobr>1 пара</nobr><div >09:20</div>
+<div >10:55</div>
+</div>
+</td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>2 пара</nobr><div >11:10</div>
+
+<div >12:45</div>
+</div>
+</td><td  colspan="2"><div ><span >Теория вероятностей и математическая статистика</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10003453" title="Горицкий Юрий Александрович">Горицкий&nbsp;Ю.А.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Методы выч. матем.</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-711</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10004624" title="Жилейкин Яков Михайлович">Жилейкин&nbsp;Я.М.</a></nobr></div>
+
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Теория ф-й и функц. анал.</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000027" title="Амосов Андрей Авенирович">Амосов&nbsp;А.А.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Уравн. мат. физики</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10003254" title="Перескоков Александр Вадимович">Перескоков&nbsp;А.В.</a></nobr></div>
+<div></div>
+
+</div>
+</td>
+<td  valign="top" align="center">
+<div ><nobr>2 пара</nobr><div >11:10</div>
+<div >12:45</div>
+</div>
+</td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>обед</nobr><div >12:45</div>
+<div >13:45</div>
+
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+</td>
+<td  valign="top" align="center">
+<div ><nobr>обед</nobr><div >12:45</div>
+<div >13:45</div>
+</div>
+</td>
+</tr>
+
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>3 пара</nobr><div >13:45</div>
+<div >15:20</div>
+</div>
+</td><td  colspan="2"><div ><span >Теория вероятностей и математическая статистика</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10003453" title="Горицкий Юрий Александрович">Горицкий&nbsp;Ю.А.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Методы выч. матем.</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10004624" title="Жилейкин Яков Михайлович">Жилейкин&nbsp;Я.М.</a></nobr></div>
+
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Теория ф-й и функц. анал.</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000027" title="Амосов Андрей Авенирович">Амосов&nbsp;А.А.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Сист. и прикладное ПО</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710А</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000390" title="Князев Анатолий Васильевич">Князев&nbsp;А.В.</a></nobr></div>
+<div></div>
+
+</div>
+</td>
+<td  valign="top" align="center">
+<div ><nobr>3 пара</nobr><div >13:45</div>
+<div >15:20</div>
+</div>
+</td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>4 пара</nobr><div >15:35</div>
+<div >17:10</div>
+
+</div>
+</td><td  colspan="2"><div ><span >Уравн. мат. физики</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10003254" title="Перескоков Александр Вадимович">Перескоков&nbsp;А.В.</a></nobr></div>
+<div></div>
+</div>
+</td><td ><div ><span >КР по МВМ</span> (<span >Консультация</span>), <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710</a></nobr></span><div></div>
+</div>
+
+</td>
+<td ><div ><span >БД и ЭС</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-710</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000438" title="Зубов Валерий Сергеевич">Зубов&nbsp;В.С.</a></nobr></div>
+<div></div>
+</div>
+</td><td >&nbsp;</td>
+<td ><div ><span >КП по курсу С и ППО</span> (<span >Консультация</span>), <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-711</a></nobr></span><div></div>
+
+</div>
+</td><td  colspan="2"><div ><span >Сист. и прикладное ПО</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-711</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000390" title="Князев Анатолий Васильевич">Князев&nbsp;А.В.</a></nobr></div>
+<div></div>
+</div>
+</td>
+<td  valign="top" align="center">
+<div ><nobr>4 пара</nobr><div >15:35</div>
+<div >17:10</div>
+</div>
+
+</td>
+</tr>
+</table>
+<h1>Расписание весеннего семестра 2010/11 уч.год группы А-13-08</h1>
+		
+		<table border="1" cellpadding="1" cellspacing="0"   ><tr>
+<td  rowspan="2">&nbsp;</td>
+<td  colspan="2" align="center">
+<div >Понедельник</div>
+</td>
+<td  colspan="2" align="center">
+<div >Вторник</div>
+</td>
+
+<td  colspan="2" align="center">
+<div >Среда</div>
+</td>
+<td  colspan="2" align="center">
+<div >Четверг</div>
+</td>
+<td  colspan="2" align="center">
+<div >Пятница</div>
+</td>
+<td  rowspan="2">&nbsp;</td>
+</tr>
+<tr>
+<td  align="center"><div >I</div></td>
+
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+<td  align="center"><div >I</div></td>
+<td  align="center"><div >II</div></td>
+
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>1 пара</nobr><div >09:20</div>
+<div >10:55</div>
+</div>
+</td>
+<td  colspan="2" rowspan="5"><div ><span ></span> (<span >День самостоятельных занятий</span>)<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Сист. и прикладное ПО</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-602</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000395" title="Маран Михкель Михкелевич">Маран&nbsp;М.М.</a></nobr></div>
+
+<div></div>
+</div>
+</td><td ><div ><span >Правоведение</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041D" 
+			>Н-202</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10004922" title="Власенко Ольга Борисовна">Власенко&nbsp;О.Б.</a></nobr></div>
+<div></div>
+</div>
+</td>
+<td ><div ><span >Правоведение</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-808</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10004922" title="Власенко Ольга Борисовна">Власенко&nbsp;О.Б.</a></nobr></div>
+
+<div></div>
+</div>
+</td><td  colspan="2">&nbsp;</td><td ><div ><span >БД и ЭС</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-915</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10002473" title="Сидорова Наталья Петровна">Сидорова&nbsp;Н.П.</a></nobr></div>
+<div></div>
+</div>
+</td>
+<td >&nbsp;</td>
+<td  valign="top" align="center">
+<div ><nobr>1 пара</nobr><div >09:20</div>
+<div >10:55</div>
+
+</div>
+</td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>2 пара</nobr><div >11:10</div>
+<div >12:45</div>
+</div>
+</td><td  colspan="2"><div ><span >Сист. и прикладное ПО</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-706</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000395" title="Маран Михкель Михкелевич">Маран&nbsp;М.М.</a></nobr></div>
+
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Теория вероятностей и математическая статистика</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-816</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10003453" title="Горицкий Юрий Александрович">Горицкий&nbsp;Ю.А.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Уравн. мат. физики</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-915</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10001236" title="Черепова Марина Федоровна">Черепова&nbsp;М.Ф.</a></nobr></div>
+<div></div>
+
+</div>
+</td><td  colspan="2"><div ><span >БД и ЭС</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-706</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10002473" title="Сидорова Наталья Петровна">Сидорова&nbsp;Н.П.</a></nobr></div>
+<div></div>
+</div>
+</td>
+<td  valign="top" align="center">
+<div ><nobr>2 пара</nobr><div >11:10</div>
+<div >12:45</div>
+</div>
+
+</td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>обед</nobr><div >12:45</div>
+<div >13:45</div>
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+</td><td  colspan="2"><div ><span ></span> (<span >Обед</span>)<div></div>
+</div>
+</td>
+<td  valign="top" align="center">
+<div ><nobr>обед</nobr><div >12:45</div>
+
+<div >13:45</div>
+</div>
+</td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>3 пара</nobr><div >13:45</div>
+<div >15:20</div>
+</div>
+</td><td  colspan="2"><div ><span >ВМСС</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-706</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10001076" title="Шамаева Ольга Юрьевна">Шамаева&nbsp;О.Ю.</a></nobr></div>
+
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >Теория вероятностей и математическая статистика</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-816</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10003453" title="Горицкий Юрий Александрович">Горицкий&nbsp;Ю.А.</a></nobr></div>
+<div></div>
+</div>
+</td><td  colspan="2"><div ><span >ВМСС</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-915</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10001076" title="Шамаева Ольга Юрьевна">Шамаева&nbsp;О.Ю.</a></nobr></div>
+<div></div>
+
+</div>
+</td><td  colspan="2"><div ><span >Семантика языков программирования</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u0416" 
+			>Ж-527</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10005738" title="Плесневич Геральд Станиславович">Плесневич&nbsp;Г.С.</a></nobr></div>
+<div></div>
+</div>
+</td>
+<td  valign="top" align="center">
+<div ><nobr>3 пара</nobr><div >13:45</div>
+<div >15:20</div>
+</div>
+
+</td>
+</tr>
+<tr >
+<td  valign="top" align="center">
+<div ><nobr>4 пара</nobr><div >15:35</div>
+<div >17:10</div>
+</div>
+</td><td ><div ><span >КР по ОПТ</span> (<span >Консультация</span>), <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-708</a></nobr></span><div></div>
+
+</div>
+</td>
+<td >&nbsp;</td><td  colspan="2"><div ><span >Уравн. мат. физики</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-816</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10001236" title="Черепова Марина Федоровна">Черепова&nbsp;М.Ф.</a></nobr></div>
+<div></div>
+</div>
+</td><td ><div ><span >КП по курсу С и ППО</span> (<span >Консультация</span>), <span >Каф.: Прикладной математики</span><div></div>
+
+</div>
+</td>
+<td ><div ><span >Сист. и прикладное ПО</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u041C" 
+			>М-915</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10000395" title="Маран Михкель Михкелевич">Маран&nbsp;М.М.</a></nobr></div>
+<div></div>
+</div>
+</td><td >&nbsp;</td>
+<td ><div ><span >Семантика языков программирования</span>, <span ><nobr><a  href="/LANG/MultiLANG/MPEIMap/mpeimap.asp?b=%u0416" 
+			>Ж-527</a></nobr></span><div><nobr><a   href="/Person/official_info.asp?id=10005738" title="Плесневич Геральд Станиславович">Плесневич&nbsp;Г.С.</a></nobr></div>
+
+<div></div>
+</div>
+</td>
+<td  valign="top" align="center">
+<div ><nobr>4 пара</nobr><div >15:35</div>
+<div >17:10</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html> 
