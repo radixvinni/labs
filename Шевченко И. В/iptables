@@ -1,0 +1,5 @@
+iptables -F
+iptables -t nat -F
+iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+iptables -t nat -A PREROUTING -i wlan0 -j DNAT -p tcp --dport 2222 --to 192.168.57.102:22
+
