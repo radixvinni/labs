@@ -4,15 +4,6 @@
 #include <time.h>
 #include <fstream>
 
-const char* OpenCLSource[] = {
-           "__kernel void keysearch(__global unsigned long* c, __global unsigned long* a,__global unsigned long* b)",
-           "{",
-           "      ",
-           "      unsigned int n = get_global_id(0);",
-           "      if(c[n]!=0)",
-           "      c[n] = a[n] + b[n];",
-           "}"
-};
 
 void set_low_keys (unsigned long	*key);
 void key_found (unsigned long	slice, unsigned long	*keybits);
